@@ -2,21 +2,50 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <ctype.h>
+#include "seq.h"
 
-/*
--create a new sequence
+Sequence* newSequence(char* k, int size) {
+  Sequence* newSequence = malloc(sizeof(Sequence));
+  newSequence->key =  malloc(sizeof(k)+1);
+  strcpy(newSequence->key, k);
+  newSequence->size = size;
+  return newSequence;
+}
 
--output a sequence
+char firstChar(Sequence* seq) {
+  char firstChar = seq->key[0];
+  return firstChar;
+}
 
--return the first character of a sequence
+Sequence* copySequence(Sequence* seq) {
+  return newSequence(seq->key, seq->size);
+}
 
--copy/duplicate a sequence
+Sequence* appendSeq(Sequence* seq, char* c) {
+  char* newKey = malloc(sizeof(seq->key) + sizeof(c)+1);
+  char* oldKey = seq->key;
+  strcat(newKey, oldKey);
+  strcat(newKey, c);
+  free(oldKey);
+  seq->key = newKey;
+  seq->size = strlen(newKey);
+  return seq;
+}
 
--append character to a sequence
+void printKey (Sequence* seq) {
+  for (size_t i = 0; i < seq->size; i++) {
+    printf("[%i]  %c \n", i, seq->key[i]);
+  }
+}
 
--test two sequences for equality
+int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
+  int cmp = strcmp(firstSeq->key,secondSeq->key);
+  printf("cmp = %i\n", cmp);
+  return cmp;
+}
 
--compute a hash table for a sequence
+unsigned seqHash(Sequence* seq) {
 
-*/
+}

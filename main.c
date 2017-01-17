@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "hash.h"
+#include "seq.h"
 
 #define MAX_WORD_SIZE 256
 #define INITIAL_TABLE_SIZE 100000
@@ -26,6 +27,10 @@ char* getNextWord(FILE* fd){
 }
 
 int main(int argc, char* argv[]){
+
+	Sequence* firstSeq = newSequence("stuff", 5);
+	Sequence* secondSeq = newSequence("wtuffc", 6);
+
 
 	char** arg = &argv[1];
 

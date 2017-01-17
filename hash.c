@@ -11,7 +11,7 @@
 Node* createNode(char* k, void* v) {
 	Node* newNode = malloc(sizeof(Node));
 	newNode->value = v;
-	newNode->word=k; 
+	newNode->word=k;
 	newNode->next = NULL;
 	return newNode;
 }
@@ -29,7 +29,7 @@ unsigned hashCode(void *key, int hashTableSize) { //Bernstein's hashing algorith
 	unsigned h = 0;
 	int i;
 	int len = strlen(key);
-	
+
 	for (i = 0; i < len; i++){
 		h = 33 * h + p[i];
 	}
@@ -56,7 +56,7 @@ void insertHash(HashTable* table, char* k, void* v) {
 		Node* newNode = createNode(k, v);
 		if (table->array[hash] == NULL) {
 			table->array[hash] = newNode;
-		} 
+		}
 		else {
 			Node* temp = table->array[hash];
 			while (temp->next != NULL){
@@ -72,7 +72,7 @@ void insertHash(HashTable* table, char* k, void* v) {
 }
 
 void* search(HashTable* table, char* key) {
-	Node* nodeEntry; 
+	Node* nodeEntry;
 	if (!key) return NULL;
 
 	nodeEntry = table->array[hashCode(key,table->size)];
@@ -86,7 +86,7 @@ void* search(HashTable* table, char* key) {
 }
 
 void destruct(HashTable* table) {
-	
+
 	Node* nodeEntry = NULL;
 	int j = 0;
 	for (int i = 0; i < table->size; ++i) {
@@ -142,7 +142,7 @@ HashTable* resizeAndRehash(HashTable* table){
 }
 
 void hashToArray(HashTable* table, int numOfLinesToPrint) {
-	Node* nodeEntry = NULL; 
+	Node* nodeEntry = NULL;
 	int size = table->count;
 	Node** arrayToBeSorted = (Node**)calloc(size,sizeof(Node*));
 
@@ -161,16 +161,16 @@ void hashToArray(HashTable* table, int numOfLinesToPrint) {
 
 	if(numOfLinesToPrint == -1 || numOfLinesToPrint > table->count){
 		for (int i = 0; i < size; ++i) {
-			printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
+			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
 		}
 	}
 
 	else{
 		for (int i = 0; i < numOfLinesToPrint; ++i){
-			printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
+			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
 		}
 	}
-	
+
 	free(arrayToBeSorted);
 }
 
@@ -190,19 +190,19 @@ void print(HashTable* table){
 	HashTable* temp = table;
 	while(i < (table->size)) {
 		if (temp->array[i] == NULL) {
-			printf("[%i]\n", i);
+			//printf("[%i]\n", i);
 			i++;
 			continue;}
 			else{
-				printf("[%i]%15s(%i), ",i, temp->array[i]->word, (int)temp->array[i]->value);
+				//printf("[%i]%15s(%i), ",i, temp->array[i]->word, (int)temp->array[i]->value);
 				Node* temp2 = temp->array[i];
 				while(temp2->next != NULL){
 					temp2 = temp2->next;
-					printf("%15s(%i), ", temp2->word,(int)temp2->value);
+					//printf("%15s(%i), ", temp2->word,(int)temp2->value);
 				}
-				printf("\n");
+				//printf("\n");
 				i++;
 			}
 		}
-		printf("Count = %i\n", table->count );
+		//printf("Count = %i\n", table->count );
 }
