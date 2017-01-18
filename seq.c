@@ -1,16 +1,12 @@
-#define _GNU_SOURCE
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <ctype.h>
 #include "seq.h"
+#define Initial_Size 8
 
-Sequence* newSequence(char* k, int size) {
+Sequence* newSequence(char* k) {
   Sequence* newSequence = malloc(sizeof(Sequence));
-  newSequence->key =  malloc(sizeof(k)+1);
+  newSequence->key =  malloc(strlen(k)+Initial_Size+1);
   strcpy(newSequence->key, k);
-  newSequence->size = size;
+  newSequence->size = Initial_Size+1+strlen(k);
+  newSequence->count = strlen(k);
   return newSequence;
 }
 
@@ -20,22 +16,37 @@ char firstChar(Sequence* seq) {
 }
 
 Sequence* copySequence(Sequence* seq) {
-  return newSequence(seq->key, seq->size);
+  return newSequence(seq->key);
 }
 
 Sequence* appendSeq(Sequence* seq, char* c) {
-  char* newKey = malloc(sizeof(seq->key) + sizeof(c)+1);
+  int seqCount = seq->count;
+  int seqSize = seq->size;
   char* oldKey = seq->key;
-  strcat(newKey, oldKey);
-  strcat(newKey, c);
-  free(oldKey);
-  seq->key = newKey;
-  seq->size = strlen(newKey);
+
+  if (seqCount >= seqSize) {
+    char* newKey = malloc(2*seqSize+1);
+    strcpy(newKey, oldKey);
+    strcat(newKey, c);
+    free(oldKey);
+    seq->key = newKey;
+    seq->size = 2*seqSize+1;
+    seq->count = strlen(newKey);
+    printf("here ----\n");
+  }
+
+  strcat(oldKey, c);
+  seq->count++;
+
+  printf("size == %i\n", seq->size);
+  printf("count == %i\n", seq->count);
+  printf("key == %i\n", &(seq->key));
+
   return seq;
 }
 
 void printKey (Sequence* seq) {
-  for (size_t i = 0; i < seq->size; i++) {
+  for (size_t i = 0; i < seq->count; i++) {
     printf("[%i]  %c \n", i, seq->key[i]);
   }
 }
@@ -47,5 +58,15 @@ int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
 }
 
 unsigned seqHash(Sequence* seq) {
+  char* key = seq->key;
+  unsigned char *p = key;
+	unsigned h = 0;
+	int i;
+	unsigned int len = strlen(key);
 
+	for (i = 0; i < len; i++){
+		h = 33 * h + p[i];
+	}
+	h = h % len;
+	return h ;
 }

@@ -133,7 +133,6 @@ HashTable* resizeAndRehash(HashTable* table){
             temp = temp2;
         }
     }
-
     free(table->array);
     table->size = newArraySize;
     table->array = newArray;
@@ -157,8 +156,7 @@ void hashToArray(HashTable* table, int numOfLinesToPrint) {
 		}
 	}
 
-	qsort(arrayToBeSorted, size, sizeof(Node*), cmpfunc);
-
+qsort(arrayToBeSorted, size, sizeof(Node*), cmpfunc);
 	if(numOfLinesToPrint == -1 || numOfLinesToPrint > table->count){
 		for (int i = 0; i < size; ++i) {
 			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);

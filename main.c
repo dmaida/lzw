@@ -5,9 +5,10 @@
 #include <ctype.h>
 #include "hash.h"
 #include "seq.h"
+#include "bits.h"
 
 #define MAX_WORD_SIZE 256
-#define INITIAL_TABLE_SIZE 100000
+#define INITIAL_TABLE_SIZE 60000
 
 char* getNextWord(FILE* fd){
 	char word[MAX_WORD_SIZE];
@@ -28,8 +29,13 @@ char* getNextWord(FILE* fd){
 
 int main(int argc, char* argv[]){
 
-	Sequence* firstSeq = newSequence("stuff", 5);
-	Sequence* secondSeq = newSequence("wtuffc", 6);
+	Sequence* firstSeq = newSequence("moreatuff");
+	firstSeq = appendSeq(firstSeq, "x");
+	printKey(firstSeq);
+
+	printf("hash = %i\n", seqHash(firstSeq));
+
+	//BitsThing* b = newBitsThing(stdin);
 
 
 	char** arg = &argv[1];
@@ -59,6 +65,7 @@ int main(int argc, char* argv[]){
 			arg++;
 			continue;
 		}
+
 
 		char* word = getNextWord(fd);
 
