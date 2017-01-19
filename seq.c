@@ -32,22 +32,21 @@ Sequence* appendSeq(Sequence* seq, char* c) {
     seq->key = newKey;
     seq->size = 2*seqSize+1;
     seq->count = strlen(newKey);
-    printf("here ----\n");
   }
 
   strcat(oldKey, c);
   seq->count++;
 
-  printf("size == %i\n", seq->size);
-  printf("count == %i\n", seq->count);
-  printf("key == %i\n", &(seq->key));
+  //printf("size == %i\n", seq->size);
+  //printf("count == %i\n", seq->count);
+  //printf("key == %i\n", &(seq->key));
 
   return seq;
 }
 
 void printKey (Sequence* seq) {
   for (size_t i = 0; i < seq->count; i++) {
-    printf("[%i]  %c \n", i, seq->key[i]);
+    //printf("[%i]  %c \n", i, seq->key[i]);
   }
 }
 
@@ -60,7 +59,7 @@ int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
 unsigned hashCode(Sequence* seq, int hashTableSize) { //Bernstein's hashing algorithm
   //Bernstein's hashing algorithm
   char* key = seq->key;
-  unsigned char *p = key;
+  unsigned char *p = (unsigned char*)key;
 	unsigned h = 0;
 	int i;
 	int len = strlen(key);
