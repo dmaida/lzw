@@ -58,6 +58,7 @@ int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
 }
 
 unsigned seqHash(Sequence* seq) {
+  //Bernstein's hashing algorithm
   char* key = seq->key;
   unsigned char *p = key;
 	unsigned h = 0;

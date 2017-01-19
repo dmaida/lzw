@@ -2,23 +2,25 @@
 #define define BITS_H
 
 #include <stdio.h>
+#include<stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
 
-typedef struct _bitsThing {
-  unsigned int extraBits;
-  unsigned int extraCount;
+typedef struct _bits {
+  unsigned int extraBits; //remainding bits
+  unsigned int bitCount;
   FILE* fd;
-}BitsThing;
+}Bits;
 
-BitsThing* newBitsThing(FILE* fd);
+Bits* newBits(FILE* fd);
 
-void deleteBitsThing(BitsThing* bt);
+void deleteBits(Bits* b);
 
-bool readBits(BitsThing* bit, unsigned int nBits, unsigned int* destination);
+bool readBits(Bits* b, unsigned int *bits, unsigned int count);
 
-bool writeBits(BitsThing* bt, unsigned int nBits, unsigned int source);
+bool writeBits(Bits* b, unsigned int bits, unsigned int count);
 
-bool flushBits(BitsThing* bt);
+bool flushBits(Bits* b);
 
 
 #endif

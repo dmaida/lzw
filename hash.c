@@ -86,7 +86,6 @@ void* search(HashTable* table, char* key) {
 }
 
 void destruct(HashTable* table) {
-
 	Node* nodeEntry = NULL;
 	int j = 0;
 	for (int i = 0; i < table->size; ++i) {
@@ -99,7 +98,6 @@ void destruct(HashTable* table) {
 			table->array[i] = nodeEntry;
 		}
 	}
-
 	free(table->array);
 	free(table);
 }
@@ -154,7 +152,7 @@ void hashToArray(HashTable* table, int numOfLinesToPrint) {
 			j++;
 			nodeEntry = nodeEntry->next;
 		}
-	}
+}
 
 qsort(arrayToBeSorted, size, sizeof(Node*), cmpfunc);
 	if(numOfLinesToPrint == -1 || numOfLinesToPrint > table->count){
@@ -162,13 +160,11 @@ qsort(arrayToBeSorted, size, sizeof(Node*), cmpfunc);
 			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
 		}
 	}
-
 	else{
 		for (int i = 0; i < numOfLinesToPrint; ++i){
 			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
 		}
 	}
-
 	free(arrayToBeSorted);
 }
 
