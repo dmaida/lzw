@@ -1,8 +1,14 @@
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "seq.h"
 typedef struct _node{
-	char* word;
-	void* value;
+	Sequence* word;
+	unsigned int value;
 	struct _node* next;
-}Node; 
+}Node;
 typedef struct _hashTable{
 	int count;
 	int size;
@@ -13,29 +19,18 @@ typedef struct _sortArray{
 	Node** array;
 } SortedArray;
 
-char* getNextWord(FILE* fd);
-
-void insert(char* word);
-
-void print();
-
-unsigned hashCode(void *key, int hashTableSize);
-
-void insertHash(HashTable* table, char* key, void* value);
-
-void* search(HashTable* table, char* key);
+Node* createNode(Sequence* seq, unsigned int v);
 
 HashTable* createTable(int size);
 
-Node* createNode(char* k, void* v);
+float loadFactor(HashTable* table);
 
-HashTable* resizeAndRehash(HashTable* table);
+void insertHash(HashTable* table, Sequence* seq, unsigned int v);
 
-void hashToArray(HashTable* table, int numOfLines);
-
-int cmpfunc (const void * a, const void * b);
+void* search(HashTable* table, Sequence* seq);
 
 void destruct(HashTable* table);
 
+HashTable* resizeAndRehash(HashTable* table);
 
-
+void printHashTable(HashTable* table);

@@ -57,17 +57,17 @@ int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
   return cmp;
 }
 
-unsigned seqHash(Sequence* seq) {
+unsigned hashCode(Sequence* seq, int hashTableSize) { //Bernstein's hashing algorithm
   //Bernstein's hashing algorithm
   char* key = seq->key;
   unsigned char *p = key;
 	unsigned h = 0;
 	int i;
-	unsigned int len = strlen(key);
+	int len = strlen(key);
 
 	for (i = 0; i < len; i++){
 		h = 33 * h + p[i];
 	}
-	h = h % len;
+	h = h % ((unsigned)hashTableSize);
 	return h ;
 }

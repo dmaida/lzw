@@ -1,17 +1,12 @@
-#define _GNU_SOURCE
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include "hash.h"
 
 #define MAX_LOAD_FACTOR .75
 #define MULTIPLYING_FACTOR 3
 
-Node* createNode(char* k, void* v) {
+Node* createNode(Sequence* seq, unsigned int v) {
 	Node* newNode = malloc(sizeof(Node));
 	newNode->value = v;
-	newNode->word=k;
+	newNode->word=seq;
 	newNode->next = NULL;
 	return newNode;
 }
@@ -24,19 +19,6 @@ HashTable* createTable(int size) {
 	return table;
 }
 
-unsigned hashCode(void *key, int hashTableSize) { //Bernstein's hashing algorithm
-	unsigned char *p = key;
-	unsigned h = 0;
-	int i;
-	int len = strlen(key);
-
-	for (i = 0; i < len; i++){
-		h = 33 * h + p[i];
-	}
-	h = h % ((unsigned)hashTableSize);
-	return h ;
-}
-
 float loadFactor(HashTable* table) {
 	float numbEntries = (float) table->count;
 	float size = (float) table->size;
@@ -44,16 +26,16 @@ float loadFactor(HashTable* table) {
 	return loadFactor;
 }
 
-void insertHash(HashTable* table, char* k, void* v) {
-	int hash = hashCode(k, table->size);
+void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
+	int hash = hashCode(seq, table->size);
 
-	if (search(table, k) != NULL) {
-		int* change = (int*)search(table, k);
+	if (search(table, seq) != NULL) {
+		int* change = (int*)search(table, seq);
 		(*change)++;
 	}
 	else {
 		table->count++;
-		Node* newNode = createNode(k, v);
+		Node* newNode = createNode(seq, v);
 		if (table->array[hash] == NULL) {
 			table->array[hash] = newNode;
 		}
@@ -71,13 +53,13 @@ void insertHash(HashTable* table, char* k, void* v) {
 	}
 }
 
-void* search(HashTable* table, char* key) {
+void* search(HashTable* table, Sequence* seq) {
 	Node* nodeEntry;
-	if (!key) return NULL;
+	if (!seq->key) return NULL;
 
-	nodeEntry = table->array[hashCode(key,table->size)];
+	nodeEntry = table->array[hashCode(seq,table->size)];
 	while(nodeEntry) {
-		if(strcmp(nodeEntry->word, key) == 0) {
+		if(cmpSeq(nodeEntry->word, seq) == 0) {
 			return &nodeEntry->value;
 		}
 		nodeEntry = nodeEntry->next;
@@ -89,7 +71,6 @@ void destruct(HashTable* table) {
 	Node* nodeEntry = NULL;
 	int j = 0;
 	for (int i = 0; i < table->size; ++i) {
-
 		while (table->array[i]) {
 			j++;
 			nodeEntry = table->array[i]->next;
@@ -134,69 +115,23 @@ HashTable* resizeAndRehash(HashTable* table){
     free(table->array);
     table->size = newArraySize;
     table->array = newArray;
-
     return table;
 }
 
-void hashToArray(HashTable* table, int numOfLinesToPrint) {
-	Node* nodeEntry = NULL;
-	int size = table->count;
-	Node** arrayToBeSorted = (Node**)calloc(size,sizeof(Node*));
-
-	int j = 0;
-	for (int i = 0; i < table->size; ++i) {
-		nodeEntry = table->array[i];
-
-		while (nodeEntry != NULL) {
-			arrayToBeSorted[j] = nodeEntry;
-			j++;
-			nodeEntry = nodeEntry->next;
-		}
-}
-
-qsort(arrayToBeSorted, size, sizeof(Node*), cmpfunc);
-	if(numOfLinesToPrint == -1 || numOfLinesToPrint > table->count){
-		for (int i = 0; i < size; ++i) {
-			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
-		}
-	}
-	else{
-		for (int i = 0; i < numOfLinesToPrint; ++i){
-			//printf("[%i] %15s %15i\n",i, arrayToBeSorted[i]->word, (int)arrayToBeSorted[i]->value);
-		}
-	}
-	free(arrayToBeSorted);
-}
-
-int cmpfunc(const void * a, const void * b) {
-
-	Node* nodeA = (*(Node**)a);
-	Node* nodeB = (*(Node**)b);
-
-	int valA = (int) nodeA->value;
-	int valB = (int) nodeB->value;
-
-	return (valB-valA);
-}
-
-void print(HashTable* table){
-	int i = 0;
-	HashTable* temp = table;
-	while(i < (table->size)) {
-		if (temp->array[i] == NULL) {
-			//printf("[%i]\n", i);
-			i++;
-			continue;}
-			else{
-				//printf("[%i]%15s(%i), ",i, temp->array[i]->word, (int)temp->array[i]->value);
-				Node* temp2 = temp->array[i];
-				while(temp2->next != NULL){
-					temp2 = temp2->next;
-					//printf("%15s(%i), ", temp2->word,(int)temp2->value);
-				}
-				//printf("\n");
-				i++;
-			}
-		}
-		//printf("Count = %i\n", table->count );
+void printHashTable(HashTable* table){
+    for (int i = 0; i < table->size; ++i){
+        printf("[%i] ",i);
+        if (table->array[i] != NULL){
+            Node* node = table->array[i];
+            int count = node->word->count;
+            while(node){
+                for (int j = 0; j < count; ++j){
+                    printf("%c", node->word->key[j]);
+                }
+                printf(", ");
+                node = node->next;
+            }
+        }
+        printf("\n");
+    }
 }

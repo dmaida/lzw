@@ -24,6 +24,6 @@ Sequence* appendSeq(Sequence* seq, char* c);
 
 int cmpSeq(Sequence* firstSeq, Sequence* secondSeq);
 
-unsigned seqHash(Sequence* seq);
+unsigned hashCode(Sequence* seq, int hashTableSize);
 
 #endif
