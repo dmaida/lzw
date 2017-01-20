@@ -12,13 +12,20 @@
 
 int main(int argc, char* argv[]){
 
-	Sequence* firstSeq = newSequence("more");
-	Sequence* secondSeq = newSequence("x");
+
+
+
 	HashTable* table = createTable(INITIAL_TABLE_SIZE);
 
-	insertHash(table, firstSeq, 33);
-	insertHash(table, secondSeq, 12);
 
+
+for (int i = 45; i < 50; i++) {
+		char c = (char) i;
+		char* pC = &c;
+		printf("HERE123: %s\n", pC);
+		Sequence* seq = newSequence(pC);
+		insertHash(table, seq, 1);
+}
 	printHashTable(table);
 
 

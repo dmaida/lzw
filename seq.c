@@ -7,6 +7,12 @@ Sequence* newSequence(char* k) {
   strcpy(newSequence->key, k);
   newSequence->size = Initial_Size+1+strlen(k);
   newSequence->count = strlen(k);
+  printf("HERE: %s\n", k);
+  for (size_t i = 0; i < newSequence->count; i++) {
+    printf("%c", newSequence->key[i]);
+  }
+  printf("\n" );
+  printf("count = %i\n",newSequence->count );
   return newSequence;
 }
 
@@ -52,7 +58,6 @@ void printKey (Sequence* seq) {
 
 int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
   int cmp = strcmp(firstSeq->key,secondSeq->key);
-  printf("cmp = %i\n", cmp);
   return cmp;
 }
 

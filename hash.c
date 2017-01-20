@@ -1,6 +1,6 @@
 #include "hash.h"
 
-#define MAX_LOAD_FACTOR .75
+#define MAX_LOAD_FACTOR 1
 #define MULTIPLYING_FACTOR 3
 
 Node* createNode(Sequence* seq, unsigned int v) {
@@ -46,10 +46,11 @@ void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 			}
 			temp->next = newNode;
 		}
-
+/*
 		if (loadFactor(table) >= MAX_LOAD_FACTOR) {
 			resizeAndRehash(table);
 		}
+*/
 	}
 }
 
@@ -125,8 +126,10 @@ void printHashTable(HashTable* table){
             Node* node = table->array[i];
             int count = node->word->count;
             while(node){
+								//printf("%s\n", node->word->key);
                 for (int j = 0; j < count; ++j){
                     printf("%c", node->word->key[j]);
+
                 }
                 printf(", ");
                 node = node->next;
