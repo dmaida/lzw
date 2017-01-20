@@ -7,12 +7,6 @@ Sequence* newSequence(char* k) {
   strcpy(newSequence->key, k);
   newSequence->size = Initial_Size+1+strlen(k);
   newSequence->count = strlen(k);
-  printf("HERE: %s\n", k);
-  for (size_t i = 0; i < newSequence->count; i++) {
-    printf("%c", newSequence->key[i]);
-  }
-  printf("\n" );
-  printf("count = %i\n",newSequence->count );
   return newSequence;
 }
 
@@ -29,9 +23,8 @@ Sequence* appendSeq(Sequence* seq, char* c) {
   int seqCount = seq->count;
   int seqSize = seq->size;
   char* oldKey = seq->key;
-
   if (seqCount >= seqSize) {
-    char* newKey = malloc(2*seqSize+1);
+    char* newKey = calloc(2*seqSize+1, sizeof(char));
     strcpy(newKey, oldKey);
     strcat(newKey, c);
     free(oldKey);
@@ -39,21 +32,9 @@ Sequence* appendSeq(Sequence* seq, char* c) {
     seq->size = 2*seqSize+1;
     seq->count = strlen(newKey);
   }
-
   strcat(oldKey, c);
   seq->count++;
-
-  //printf("size == %i\n", seq->size);
-  //printf("count == %i\n", seq->count);
-  //printf("key == %i\n", &(seq->key));
-
   return seq;
-}
-
-void printKey (Sequence* seq) {
-  for (size_t i = 0; i < seq->count; i++) {
-    //printf("[%i]  %c \n", i, seq->key[i]);
-  }
 }
 
 int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
@@ -61,7 +42,12 @@ int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
   return cmp;
 }
 
-unsigned hashCode(Sequence* seq, int hashTableSize) { //Bernstein's hashing algorithm
+void deleteSeq(Sequence* seq) {
+  free(seq->key);
+  free(seq);
+}
+
+unsigned hashCode(Sequence* seq, int hashTableSize) {
   //Bernstein's hashing algorithm
   char* key = seq->key;
   unsigned char *p = (unsigned char*)key;

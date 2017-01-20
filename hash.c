@@ -19,6 +19,16 @@ HashTable* createTable(int size) {
 	return table;
 }
 
+void initializeDict(HashTable* table) {
+	for (int i =0; i < 256; i++) {
+		char* c =  malloc(8+1);
+		c[0] = (char) i;
+		Sequence* seq = newSequence(c);
+		insertHash(table, seq, i);
+		free(c);
+	}
+}
+
 float loadFactor(HashTable* table) {
 	float numbEntries = (float) table->count;
 	float size = (float) table->size;
@@ -75,7 +85,7 @@ void destruct(HashTable* table) {
 		while (table->array[i]) {
 			j++;
 			nodeEntry = table->array[i]->next;
-			free(table->array[i]->word);
+			deleteSeq(table->array[i]->word);
 			free(table->array[i]);
 			table->array[i] = nodeEntry;
 		}
@@ -124,13 +134,8 @@ void printHashTable(HashTable* table){
         printf("[%i] ",i);
         if (table->array[i] != NULL){
             Node* node = table->array[i];
-            int count = node->word->count;
             while(node){
-								//printf("%s\n", node->word->key);
-                for (int j = 0; j < count; ++j){
-                    printf("%c", node->word->key[j]);
-
-                }
+                printf("%s", node->word->key);
                 printf(", ");
                 node = node->next;
             }

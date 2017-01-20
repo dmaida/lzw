@@ -34,3 +34,5 @@ void destruct(HashTable* table);
 HashTable* resizeAndRehash(HashTable* table);
 
 void printHashTable(HashTable* table);
+
+void initializeDict(HashTable* table);

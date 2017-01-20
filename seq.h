@@ -26,4 +26,6 @@ int cmpSeq(Sequence* firstSeq, Sequence* secondSeq);
 
 unsigned hashCode(Sequence* seq, int hashTableSize);
 
+void deleteSeq(Sequence* seq);
+
 #endif

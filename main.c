@@ -8,27 +8,14 @@
 #include "bits.h"
 
 #define MAX_WORD_SIZE 256
-#define INITIAL_TABLE_SIZE 10
+#define INITIAL_TABLE_SIZE 300
 
 int main(int argc, char* argv[]){
-
-
-
-
 	HashTable* table = createTable(INITIAL_TABLE_SIZE);
+	
+	initializeDict(table);
 
-
-
-for (int i = 45; i < 50; i++) {
-		char c = (char) i;
-		char* pC = &c;
-		printf("HERE123: %s\n", pC);
-		Sequence* seq = newSequence(pC);
-		insertHash(table, seq, 1);
-}
 	printHashTable(table);
-
-
 	destruct(table);
 	return 0;
 }
