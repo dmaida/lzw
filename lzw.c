@@ -1,3 +1,2 @@
-#include "bits.h"
-#include "hash.h"
-#include "seq.h"
+//encode	an	input	stream,	writing	to	an	output	stream
+//decode	an	input	stream,	writing	to	an	output	stream

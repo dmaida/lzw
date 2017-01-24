@@ -20,4 +20,4 @@ clean:
 	rm *.o runMain
 
 run:
-	./runMain
+	make && ./runMain test.txt && make clean

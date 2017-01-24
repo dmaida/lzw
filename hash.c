@@ -20,7 +20,7 @@ HashTable* createTable(int size) {
 }
 
 void initializeDict(HashTable* table) {
-	for (int i =0; i < 256; i++) {
+	for (unsigned int i =0; i < 256; i++) {
 		char* c =  malloc(8+1);
 		c[0] = (char) i;
 		Sequence* seq = newSequence(c);
