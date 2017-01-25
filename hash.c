@@ -1,6 +1,6 @@
 #include "hash.h"
 
-#define MAX_LOAD_FACTOR 1
+#define MAX_LOAD_FACTOR .75
 #define MULTIPLYING_FACTOR 3
 
 Node* createNode(Sequence* seq, unsigned int v) {

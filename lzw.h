@@ -5,12 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "bits.h"
 #include "hash.h"
 #include "seq.h"
+#include "bits.h"
 
-
-
+void encode(FILE* input, FILE* output);
+void decode(int bits, int maxbits, FILE* input, FILE* output);
 
 
 
