@@ -15,11 +15,10 @@ void deleteBits(Bits* b) {
 bool readBits(Bits* b, unsigned int *bits, unsigned int count) {
   unsigned int code = 0;
   int firstByte = fgetc(b->fd);
-
+  int secondByte = fgetc(b->fd);
   if (firstByte == EOF) {
     return false;
   }
-  int secondByte = fgetc(b->fd);
   code = (firstByte << 8) | secondByte;
   *bits = code;
   return true;

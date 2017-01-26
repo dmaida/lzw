@@ -1,24 +1,24 @@
 #include "lzw.h"
 
 #define MAX_WORD_SIZE 256
-#define INITIAL_TABLE_SIZE 300
+#define INITIAL_TABLE_SIZE 10
 
 void encode(FILE* input, FILE* output) {
   HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
-  initializeDict(table);  //Insert characters 0 through 255
+  //initializeDict(table);  //Insert characters 0 through 255
   int nextCode = 256;
   Bits* b = newBits(input);
-  unsigned int bits = 16;
-  readBits(b, &bits,16);
-
-  printf("bit == %c\n", bits);
-  char* ch =  malloc(8+1);
-  ch[0] = bits;
-
-  Sequence* W = newSequence(ch);
-  insertHash(table, W, nextCode);
 
 
+  unsigned int bits = 0;
+  while (readBits(b, &bits,1)) {
+    printf("%c\n",bits);
+    char* c =  malloc(4);
+    c[0] = (char) bits;
+    Sequence* W = newSequence(c);
+    insertHash(table, W , nextCode);
+    free(c);
+  }
 
   printHashTable(table);
 	destruct(table);
