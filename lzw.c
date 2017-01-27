@@ -1,36 +1,50 @@
 #include "lzw.h"
 
 #define MAX_WORD_SIZE 256
-#define INITIAL_TABLE_SIZE 10
+#define INITIAL_TABLE_SIZE 600000
 
 void encode(FILE* input, FILE* output) {
   HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
-  //initializeDict(table);  //Insert characters 0 through 255
-  int nextCode = 256;
-  Bits* b = newBits(input);
+  initializeDict(table);  //Insert characters 0 through 255
 
+  int nextCode = 256;
+  Bits* inBits = newBits(input);
+  Bits* outBits = newBits(output);
 
   unsigned int bits = 0;
-  while (readBits(b, &bits,1)) {
-    printf("%c\n",bits);
-    char* c =  malloc(4);
-    c[0] = (char) bits;
-    Sequence* W = newSequence(c);
-    insertHash(table, W , nextCode);
-    free(c);
-  }
 
-  printHashTable(table);
+  readBits(inBits, &bits,1);
+  char* c =  malloc(4);
+  c[0] = (char) bits;
+  Sequence* W = newSequence(c);
+  //free(c);
+  while (readBits(inBits, &bits,1)) {
+    c[0] = (char) bits;
+    Sequence* X = appendSeq(W, c);
+    if (search(table, X) != NULL) {
+      W = copySequence(X);
+      insertHash(table, W , nextCode);
+    } else {
+      printf("---------------------------\n");
+      printf("word %s\n", W->key);
+      int b = search(table, W);
+      printf("code == %x\n", b);
+      writeBits(outBits, b, 16);
+      insertHash(table, X , nextCode);
+    }
+  }
+  //printHashTable(table);
 	destruct(table);
 }
 
+void stuff(FILE* input, FILE* output) {
 
+}
 
 //encode	an	input	stream,	writing	to	an	output	stream
 //decode	an	input	stream,	writing	to	an	output	stream
 
 /*
-
 Encoding
 
 Initialize dictionary D and insert characters 0 through 255
@@ -54,6 +68,5 @@ Sequence W = read the first byte of data
     }
 }
 find Sequence W in D and output its assigned code
-
 
 */

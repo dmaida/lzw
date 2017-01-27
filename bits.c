@@ -24,11 +24,14 @@ bool readBits(Bits* b, unsigned int *bits, unsigned int count) {
   return true;
 }
 
-bool writeBits(Bits* b, unsigned int bits, unsigned int count) {
+bool writeBits(Bits* b,  unsigned int bits, unsigned int count) {
   assert(count == 16);
   assert(b != NULL);
+  printf("bits %x\n", bits);
   unsigned int firstByte = (bits >> 8) & 0xFF;
   unsigned int secondByte = bits & 0xFF;
+  printf("firstByte = %x\n", firstByte);
+  printf("secondByte = %x\n", secondByte);
   fputc(firstByte, b->fd);
   fputc(secondByte, b->fd);
   return true;

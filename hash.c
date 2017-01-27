@@ -1,6 +1,6 @@
 #include "hash.h"
 
-#define MAX_LOAD_FACTOR .75
+#define MAX_LOAD_FACTOR .5
 #define MULTIPLYING_FACTOR 3
 
 Node* createNode(Sequence* seq, unsigned int v) {
@@ -64,13 +64,15 @@ void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 	}
 }
 
-void* search(HashTable* table, Sequence* seq) {
+int* search(HashTable* table, Sequence* seq) {
+printf("key == %s\n", seq->key);
 	Node* nodeEntry;
 	if (!seq->key) return NULL;
 
 	nodeEntry = table->array[hashCode(seq,table->size)];
 	while(nodeEntry) {
 		if(cmpSeq(nodeEntry->word, seq) == 0) {
+			printf("value == %x\n", nodeEntry->value);
 			return &nodeEntry->value;
 		}
 		nodeEntry = nodeEntry->next;

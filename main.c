@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[]){
 	FILE* input = fopen(argv[1], "r");
-	FILE* output = fopen(argv[2], "r");
+	FILE* output = fopen(argv[2], "w");
 
 	encode(input, output);
 
