@@ -14,27 +14,26 @@ void encode(FILE* input, FILE* output) {
   unsigned int bits = 0;
 
   readBits(inBits, &bits,1);
-  char* c =  malloc(4);
-  c[0] = (char) bits;
-  Sequence* W = newSequence(c);
+  char* c = malloc(0);
+  memcpy(c, (char*)&bits, 2);
+  Sequence* W = newSequence(&c[0]);
+  printf("Seq->word: %s\n", W->key);
   //free(c);
   while (readBits(inBits, &bits,1)) {
-    c[0] = (char) bits;
-    Sequence* X = appendSeq(W, c);
+    memcpy(c, (char*)&bits, 2);
+    Sequence* X = appendSeq(W, &c[1]);
+    printf("Seq->word: %s\n", X->key);
     if (searchForSeq(table, X) != -1) {
       W = copySequence(X);
-      insertHash(table, W , nextCode);
     } else {
-      printf("---------------------------\n");
-      printf("word %s\n", W->key);
       int b = searchForSeq(table, W);
-
-      printf("code == %x\n", b);
       writeBits(outBits, b, 16);
       insertHash(table, X , nextCode);
+      nextCode++;
+      W = newSequence(c);
     }
   }
-  printHashTable(table);
+  //printHashTable(table);
 	destruct(table);
 }
 

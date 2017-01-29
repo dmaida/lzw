@@ -1,6 +1,6 @@
 #include "hash.h"
 
-#define MAX_LOAD_FACTOR .5
+#define MAX_LOAD_FACTOR .75
 #define MULTIPLYING_FACTOR 3
 
 Node* createNode(Sequence* seq, unsigned int v) {
@@ -88,10 +88,7 @@ int searchForSeq(HashTable* table, Sequence* seq) {
 		nodeEntry = nodeEntry->next;
 	}
 	return -1;
-
 }
-
-
 
 void destruct(HashTable* table) {
 	Node* nodeEntry = NULL;
@@ -150,8 +147,15 @@ void printHashTable(HashTable* table){
         if (table->array[i] != NULL){
             Node* node = table->array[i];
             while(node){
+							if (node->value <= 31) {
+								printf("(%x, %i)", node->value, node->value);
+                printf(", ");
+							} else {
                 printf("(%s, %i)", node->word->key, node->value);
                 printf(", ");
+							}
+
+
                 node = node->next;
             }
         }
