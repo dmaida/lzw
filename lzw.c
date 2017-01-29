@@ -1,7 +1,7 @@
 #include "lzw.h"
 
 #define MAX_WORD_SIZE 256
-#define INITIAL_TABLE_SIZE 600000
+#define INITIAL_TABLE_SIZE 300
 
 void encode(FILE* input, FILE* output) {
   HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
@@ -21,23 +21,58 @@ void encode(FILE* input, FILE* output) {
   while (readBits(inBits, &bits,1)) {
     c[0] = (char) bits;
     Sequence* X = appendSeq(W, c);
-    if (search(table, X) != NULL) {
+    if (searchForSeq(table, X) != -1) {
       W = copySequence(X);
       insertHash(table, W , nextCode);
     } else {
       printf("---------------------------\n");
       printf("word %s\n", W->key);
-      int b = search(table, W);
+      int b = searchForSeq(table, W);
+
       printf("code == %x\n", b);
       writeBits(outBits, b, 16);
       insertHash(table, X , nextCode);
     }
   }
-  //printHashTable(table);
+  printHashTable(table);
 	destruct(table);
 }
 
 void stuff(FILE* input, FILE* output) {
+  HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
+  initializeDict(table);  //Insert characters 0 through 255
+  int nextCode = 256;
+
+
+
+  Sequence* A = newSequence("aa");
+  Sequence* B = newSequence("aabasd");
+  Sequence* C = newSequence("aabb");
+  Sequence* D = newSequence("aab");
+
+  Sequence* X = newSequence("aaaaaa");
+
+  insertHash(table, A , nextCode);
+  //nextCode++;
+  insertHash(table, B , 22322);
+  //nextCode++;
+  insertHash(table, C , nextCode);
+  //nextCode++;
+  insertHash(table, D , nextCode);
+
+  if (searchForSeq(table, X) == -1) {
+    printf("Did not find X\n");
+  }
+
+  int searchForSeqA = searchForSeq(table, A);
+  printf("searchForSeq A : %i\n", (searchForSeqA));
+
+
+  int searchForSeqB = searchForSeq(table, B);
+  printf("searchForSeq B : %i\n", searchForSeqB);
+
+  printHashTable(table);
+  destruct(table);
 
 }
 

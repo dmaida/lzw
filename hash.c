@@ -64,21 +64,34 @@ void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 	}
 }
 
-int* search(HashTable* table, Sequence* seq) {
-printf("key == %s\n", seq->key);
+void* search(HashTable* table, Sequence* seq) {
 	Node* nodeEntry;
 	if (!seq->key) return NULL;
-
 	nodeEntry = table->array[hashCode(seq,table->size)];
 	while(nodeEntry) {
 		if(cmpSeq(nodeEntry->word, seq) == 0) {
-			printf("value == %x\n", nodeEntry->value);
 			return &nodeEntry->value;
 		}
 		nodeEntry = nodeEntry->next;
 	}
 	return NULL;
 }
+
+int searchForSeq(HashTable* table, Sequence* seq) {
+	Node* nodeEntry;
+	if (!seq->key) return -1;
+	nodeEntry = table->array[hashCode(seq,table->size)];
+	while(nodeEntry) {
+		if(cmpSeq(nodeEntry->word, seq) == 0) {
+			return nodeEntry->value;
+		}
+		nodeEntry = nodeEntry->next;
+	}
+	return -1;
+
+}
+
+
 
 void destruct(HashTable* table) {
 	Node* nodeEntry = NULL;
@@ -137,7 +150,7 @@ void printHashTable(HashTable* table){
         if (table->array[i] != NULL){
             Node* node = table->array[i];
             while(node){
-                printf("%s", node->word->key);
+                printf("(%s, %i)", node->word->key, node->value);
                 printf(", ");
                 node = node->next;
             }

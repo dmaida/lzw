@@ -27,7 +27,9 @@ float loadFactor(HashTable* table);
 
 void insertHash(HashTable* table, Sequence* seq, unsigned int v);
 
-int* search(HashTable* table, Sequence* seq);
+void* search(HashTable* table, Sequence* seq);
+
+int searchForSeq(HashTable* table, Sequence* seq);
 
 void destruct(HashTable* table);
 
