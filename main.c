@@ -11,8 +11,6 @@ int main(int argc, char* argv[]){
 
 	encode(input, output);
 
-	//stuff(input, output);
-
 	fclose(input);
 	fclose(output);
 

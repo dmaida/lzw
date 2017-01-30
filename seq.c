@@ -2,8 +2,8 @@
 #define Initial_Size 8
 
 Sequence* newSequence(char* k) {
-  Sequence* newSequence = malloc(sizeof(Sequence));
-  newSequence->key =  malloc(strlen(k)+Initial_Size+1);
+  Sequence* newSequence = (Sequence*) malloc(sizeof(Sequence));
+  newSequence->key = malloc(strlen(k)+Initial_Size+1);
   strcpy(newSequence->key, k);
   newSequence->size = Initial_Size+1+strlen(k);
   newSequence->count = strlen(k);

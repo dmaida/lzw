@@ -12,8 +12,4 @@
 void encode(FILE* input, FILE* output);
 void decode(int bits, int maxbits, FILE* input, FILE* output);
 
-void stuff(FILE* input, FILE* output);
-
-
-
 #endif

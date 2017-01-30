@@ -38,12 +38,6 @@ float loadFactor(HashTable* table) {
 
 void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 	int hash = hashCode(seq, table->size);
-
-	if (search(table, seq) != NULL) {
-		int* change = (int*)search(table, seq);
-		(*change)++;
-	}
-	else {
 		table->count++;
 		Node* newNode = createNode(seq, v);
 		if (table->array[hash] == NULL) {
@@ -56,25 +50,9 @@ void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 			}
 			temp->next = newNode;
 		}
-/*
 		if (loadFactor(table) >= MAX_LOAD_FACTOR) {
 			resizeAndRehash(table);
 		}
-*/
-	}
-}
-
-void* search(HashTable* table, Sequence* seq) {
-	Node* nodeEntry;
-	if (!seq->key) return NULL;
-	nodeEntry = table->array[hashCode(seq,table->size)];
-	while(nodeEntry) {
-		if(cmpSeq(nodeEntry->word, seq) == 0) {
-			return &nodeEntry->value;
-		}
-		nodeEntry = nodeEntry->next;
-	}
-	return NULL;
 }
 
 int searchForSeq(HashTable* table, Sequence* seq) {
@@ -92,10 +70,8 @@ int searchForSeq(HashTable* table, Sequence* seq) {
 
 void destruct(HashTable* table) {
 	Node* nodeEntry = NULL;
-	int j = 0;
 	for (int i = 0; i < table->size; ++i) {
 		while (table->array[i]) {
-			j++;
 			nodeEntry = table->array[i]->next;
 			deleteSeq(table->array[i]->word);
 			free(table->array[i]);
@@ -154,7 +130,6 @@ void printHashTable(HashTable* table){
                 printf("(%s, %i)", node->word->key, node->value);
                 printf(", ");
 							}
-
 
                 node = node->next;
             }
