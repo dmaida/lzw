@@ -23,21 +23,37 @@ void encode(FILE* input, FILE* output) {
     Sequence* X = copySequence(W);
     appendSeq(X, c);
     if (searchForSeq(table, X) != -1) {
+      deleteSeq(W);
       W = copySequence(X);
     } else {
-      int b = searchForSeq(table, W);
-      writeBits(outBits, b);
-      insertHash(table, X , nextCode);
-      nextCode++;
+      writeBits(outBits, searchForSeq(table, W));
+
+      if (nextCode < table->size) {
+        insertHash(table, X , nextCode);
+        nextCode++;
+      }
+      deleteSeq(W);
       W = newSequence(c);
     }
-    deleteSeq(X);
   }
-  int a = searchForSeq(table, W);
-  writeBits(outBits, a);
+  writeBits(outBits, searchForSeq(table, W));
   //printHashTable(table);
   deleteSeq(W);
   deleteBits(outBits);
   free(c);
 	destruct(table);
+}
+
+void decode(FILE* input, FILE* output) {
+
+
+
+
+
+
+
+
+
+
+
 }

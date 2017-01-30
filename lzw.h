@@ -10,6 +10,6 @@
 #include "bits.h"
 
 void encode(FILE* input, FILE* output);
-void decode(int bits, int maxbits, FILE* input, FILE* output);
+void decode(FILE* input, FILE* output);
 
 #endif
