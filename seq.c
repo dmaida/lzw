@@ -3,10 +3,10 @@
 
 Sequence* newSequence(char* k) {
   Sequence* newSequence = (Sequence*) malloc(sizeof(Sequence));
-  newSequence->key = malloc(strlen(k)+Initial_Size+1);
-  strcpy(newSequence->key, k);
+  newSequence->key = (char*) malloc(strlen(k)+Initial_Size+1);
   newSequence->size = Initial_Size+1+strlen(k);
   newSequence->count = strlen(k);
+  strcpy(newSequence->key, k);
   return newSequence;
 }
 
@@ -24,13 +24,14 @@ Sequence* appendSeq(Sequence* seq, char* c) {
   int seqSize = seq->size;
   char* oldKey = seq->key;
   if (seqCount >= seqSize) {
-    char* newKey = calloc(2*seqSize+1, sizeof(char));
+    char* newKey = (char*) calloc(2*seqSize+1, sizeof(char));
     strcpy(newKey, oldKey);
     strcat(newKey, c);
     free(oldKey);
     seq->key = newKey;
     seq->size = 2*seqSize+1;
     seq->count = strlen(newKey);
+    free(newKey);
   }
   strcat(oldKey, c);
   seq->count++;

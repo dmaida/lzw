@@ -12,11 +12,11 @@ void encode(FILE* input, FILE* output) {
   Bits* outBits = newBits(output);
 
   int charRead = fgetc(input);
-  char* firstByte = malloc(8);
+  char* firstByte = calloc(16, sizeof(char));
   firstByte[0] = (char) charRead;
   Sequence* W = newSequence(firstByte);
   free(firstByte);
-  char* c = malloc(16);
+  char* c = (char*) calloc(16, sizeof(char));
 
   while((charRead = fgetc(input)) != EOF) {
     c[0] = (char) charRead;
@@ -25,13 +25,11 @@ void encode(FILE* input, FILE* output) {
     if (searchForSeq(table, X) != -1) {
       deleteSeq(W);
       W = copySequence(X);
+      deleteSeq(X);
     } else {
+      insertHash(table, X , nextCode);
+      nextCode++;
       writeBits(outBits, searchForSeq(table, W));
-
-      if (nextCode < table->size) {
-        insertHash(table, X , nextCode);
-        nextCode++;
-      }
       deleteSeq(W);
       W = newSequence(c);
     }

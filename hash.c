@@ -4,7 +4,7 @@
 #define MULTIPLYING_FACTOR 3
 
 Node* createNode(Sequence* seq, unsigned int v) {
-	Node* newNode = malloc(sizeof(Node));
+	Node* newNode = (Node*) malloc(sizeof(Node));
 	newNode->value = v;
 	newNode->word=seq;
 	newNode->next = NULL;
@@ -12,7 +12,7 @@ Node* createNode(Sequence* seq, unsigned int v) {
 }
 
 HashTable* createTable(int size) {
-	HashTable* table = malloc(sizeof(HashTable));
+	HashTable* table = (HashTable*) malloc(sizeof(HashTable));
 	table->size = size;
 	table->count = 0;
 	table->array = (Node**) calloc(size,sizeof(Node*));
@@ -21,7 +21,7 @@ HashTable* createTable(int size) {
 
 void initializeDict(HashTable* table) {
 	for (unsigned int i =0; i < 256; i++) {
-		char* c =  malloc(8+1);
+		char* c =  (char*) calloc(16, sizeof(char));
 		c[0] = (char) i;
 		Sequence* seq = newSequence(c);
 		insertHash(table, seq, i);
@@ -50,9 +50,11 @@ void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 			}
 			temp->next = newNode;
 		}
+/*
 		if (loadFactor(table) >= MAX_LOAD_FACTOR) {
 			resizeAndRehash(table);
 		}
+		*/
 }
 
 int searchForSeq(HashTable* table, Sequence* seq) {
@@ -70,16 +72,20 @@ int searchForSeq(HashTable* table, Sequence* seq) {
 
 void destruct(HashTable* table) {
 	Node* nodeEntry = NULL;
+	printf("Nodes to delete: %i \n", table->count);
+	int count = 0;
 	for (int i = 0; i < table->size; ++i) {
 		while (table->array[i]) {
 			nodeEntry = table->array[i]->next;
 			deleteSeq(table->array[i]->word);
 			free(table->array[i]);
 			table->array[i] = nodeEntry;
+			count++;
 		}
 	}
 	free(table->array);
 	free(table);
+	printf("Deletions : %i\n", count);
 }
 
 HashTable* resizeAndRehash(HashTable* table){
@@ -130,7 +136,6 @@ void printHashTable(HashTable* table){
                 printf("(%s, %i)", node->word->key, node->value);
                 printf(", ");
 							}
-
                 node = node->next;
             }
         }
