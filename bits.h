@@ -18,7 +18,7 @@ void deleteBits(Bits* b);
 
 bool readBits(Bits* b, unsigned int *bits, unsigned int count);
 
-bool writeBits(Bits* b, unsigned int bits, unsigned int count);
+bool writeBits(Bits* b, unsigned int bits);
 
 bool flushBits(Bits* b);
 

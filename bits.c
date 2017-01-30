@@ -25,8 +25,7 @@ bool readBits(Bits* b, unsigned int *bits, unsigned int count) {
   return true;
 }
 
-bool writeBits(Bits* b,  unsigned int bits, unsigned int count) {
-  assert(count == 16);
+bool writeBits(Bits* b,  unsigned int bits) {
   assert(b != NULL);
   unsigned int firstByte = (bits >> 8) & 0xFF;
   unsigned int secondByte = bits & 0xFF;

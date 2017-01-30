@@ -8,32 +8,41 @@ void encode(FILE* input, FILE* output) {
   initializeDict(table);  //Insert characters 0 through 255
 
   int nextCode = 256;
-  Bits* inBits = newBits(input);
+
   Bits* outBits = newBits(output);
 
-  unsigned int bits = 0;
+  int charRead = fgetc(input);
+  char* firstByte = malloc(8);
+  firstByte[0] = (char) charRead;
+  Sequence* W = newSequence(firstByte);
 
-  readBits(inBits, &bits,1);
-  char* c = malloc(0);
-  memcpy(c, (char*)&bits, 2);
-  Sequence* W = newSequence(&c[0]);
-  printf("Seq->word: %s\n", W->key);
-  //free(c);
-  while (readBits(inBits, &bits,1)) {
-    memcpy(c, (char*)&bits, 2);
-    Sequence* X = appendSeq(W, &c[1]);
-    printf("Seq->word: %s\n", X->key);
+  char* c = malloc(16);
+
+  while((charRead = fgetc(input)) != EOF) {
+    c[0] = (char) charRead;
+    Sequence* X = copySequence(W);
+    appendSeq(X, c);
     if (searchForSeq(table, X) != -1) {
+      printf("found '%s'\n", X->key);
       W = copySequence(X);
     } else {
+      printf("searching for '%s' \n", W->key);
+
+      printf("W '%s' \n", W->key);
+      printf("X '%s' \n", X->key);
+
       int b = searchForSeq(table, W);
-      writeBits(outBits, b, 16);
+      writeBits(outBits, b);
+
+      printf("Inserting = '%s' \n",X->key );
       insertHash(table, X , nextCode);
       nextCode++;
       W = newSequence(c);
     }
   }
-  //printHashTable(table);
+  int a = searchForSeq(table, W);
+  writeBits(outBits, a);
+  printHashTable(table);
 	destruct(table);
 }
 
