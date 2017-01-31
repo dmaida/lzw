@@ -72,7 +72,6 @@ int searchForSeq(HashTable* table, Sequence* seq) {
 
 void destruct(HashTable* table) {
 	Node* nodeEntry = NULL;
-	printf("Nodes to delete: %i \n", table->count);
 	int count = 0;
 	for (int i = 0; i < table->size; ++i) {
 		while (table->array[i]) {
@@ -85,7 +84,6 @@ void destruct(HashTable* table) {
 	}
 	free(table->array);
 	free(table);
-	printf("Deletions : %i\n", count);
 }
 
 HashTable* resizeAndRehash(HashTable* table){
