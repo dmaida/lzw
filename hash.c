@@ -50,11 +50,9 @@ void insertHash(HashTable* table, Sequence* seq, unsigned int v) {
 			}
 			temp->next = newNode;
 		}
-/*
 		if (loadFactor(table) >= MAX_LOAD_FACTOR) {
 			resizeAndRehash(table);
 		}
-		*/
 }
 
 int searchForSeq(HashTable* table, Sequence* seq) {

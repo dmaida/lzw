@@ -1,7 +1,7 @@
 #include "lzw.h"
 
 #define MAX_WORD_SIZE 256
-#define INITIAL_TABLE_SIZE 60000
+#define INITIAL_TABLE_SIZE 1000000
 
 void encode(FILE* input, FILE* output) {
   HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
@@ -21,7 +21,7 @@ void encode(FILE* input, FILE* output) {
   while((charRead = fgetc(input)) != EOF) {
     c[0] = (char) charRead;
     Sequence* X = copySequence(W);
-    appendSeq(X, c);
+    appendSeq(X, charRead);
     if (searchForSeq(table, X) != -1) {
       deleteSeq(W);
       W = copySequence(X);
@@ -41,7 +41,6 @@ void encode(FILE* input, FILE* output) {
     }
   }
   writeBits(outBits, searchForSeq(table, W));
-  //printHashTable(table);
   deleteSeq(W);
   deleteBits(outBits);
   free(c);
@@ -50,49 +49,53 @@ void encode(FILE* input, FILE* output) {
 
 void decode(FILE* input, FILE* output) {
 
+  int tableSize = 0XFFFF;
+
+  Sequence** T = (Sequence**) calloc(tableSize+1, sizeof(Sequence*));
+
+  char* c =  (char*) calloc(16, sizeof(char));
+  for (unsigned int i = 0; i < 256; i++) {
+		c[0] = (char) i;
+		Sequence* seq = newSequence(c);
+    T[i] = seq;
+	}
+  free(c);
+
+  Bits* inBits = newBits(input);
+
+  unsigned int bits = 0;
+  readBits(inBits, &bits);
+
+  unsigned int previousCode = bits;
+  outSeq(output, T[previousCode]);
+
+  int count = 256;
+
+  while (readBits(inBits, &bits)) {
+     unsigned int currentCode = bits;
+     char c;
+     if (T[currentCode] != NULL) {
+       c = firstChar(T[currentCode]);
+     } else {
+       c = firstChar(T[previousCode]);
+     }
+     if (count < tableSize+1) {
+     Sequence* W = copySequence(T[previousCode]);
+     W = appendSeq(W, c);
+     T[count] = W;
+     count++;
+   }
+     outSeq(output, T[currentCode]);
+     previousCode = currentCode;
+   }
+
+   for (int i = 0; i <= tableSize; i++) {
+     if (T[i] != NULL) {
+       deleteSeq(T[i]);
+     } else {
+       printf(" Here\n");
+     }
+   }
+   free(T);
+   deleteBits(inBits);
 }
-
-
-/*
-
-Decode
-
-Table T is a table of Sequences, indexed by an integer code.
-The table must be large enough to hold as many codes as are
-permitted by the maximum code bit width. Initialize table
-T with entries 0 through 255 with each holding a single
-character Sequence, one entry for each character 0 through
-255, respectively.
-
-integer previousCode gets the first code read from input
-output Sequence T[previousCode]
-
-while (there are more codes to be read) {
-  integer currentCode gets the next code from input
-  if currentCode is within Table T, then
-    Character C = first character of T[currentCode]
-  else
-    Character C = first character of T[previousCode]
-  if Table T is not full, then
-    Sequence W gets a new sequence using
-      T[previousCode] concatenated with C
-    add Sequence W at the next index/code in Table T
-  output Sequence T[currentCode]
-  previousCode becomes the currentCode
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/

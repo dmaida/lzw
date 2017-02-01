@@ -19,7 +19,11 @@ Sequence* copySequence(Sequence* seq) {
   return newSequence(seq->key);
 }
 
-Sequence* appendSeq(Sequence* seq, char* c) {
+Sequence* appendSeq(Sequence* seq, char ch) {
+
+  char* c = (char*) calloc(16, sizeof(char));
+  c[0] = ch;
+
   int seqCount = seq->count;
   int seqSize = seq->size;
   char* oldKey = seq->key;
@@ -35,7 +39,15 @@ Sequence* appendSeq(Sequence* seq, char* c) {
   }
   strcat(oldKey, c);
   seq->count++;
+  free(c);
   return seq;
+}
+
+void outSeq(FILE* fd, Sequence* seq) {
+  char* word = seq->key;
+  for (int i = 0; i < strlen(word) ; i++) {
+      fputc(word[i], fd);
+  }
 }
 
 int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {

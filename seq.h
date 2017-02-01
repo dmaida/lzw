@@ -20,7 +20,9 @@ char firstChar(Sequence* seq);
 
 Sequence* copySequence(Sequence* seq);
 
-Sequence* appendSeq(Sequence* seq, char* c);
+Sequence* appendSeq(Sequence* seq, char ch);
+
+void outSeq(FILE* fd, Sequence* seq);
 
 int cmpSeq(Sequence* firstSeq, Sequence* secondSeq);
 

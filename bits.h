@@ -16,7 +16,7 @@ Bits* newBits(FILE* fd);
 
 void deleteBits(Bits* b);
 
-bool readBits(Bits* b, unsigned int *bits, unsigned int count);
+bool readBits(Bits* b, unsigned int *bits);
 
 bool writeBits(Bits* b, unsigned int bits);
 
