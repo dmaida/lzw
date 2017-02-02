@@ -21,6 +21,3 @@ bits.o: bits.c bits.h
 
 clean:
 	rm *.o lzw
-
-run:
-	make && ./runMain test.txt && make clean

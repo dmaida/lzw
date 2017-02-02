@@ -1,6 +1,5 @@
 #include "lzw.h"
 
-#define MAX_WORD_SIZE 256
 #define INITIAL_TABLE_SIZE 1000000
 
 void encode(FILE* input, FILE* output) {
@@ -27,9 +26,7 @@ void encode(FILE* input, FILE* output) {
       W = copySequence(X);
       deleteSeq(X);
     } else {
-
       writeBits(outBits, searchForSeq(table, W));
-
       if (nextCode <= 0XFFFF) {
         insertHash(table, X , nextCode);
         nextCode++;
@@ -92,8 +89,6 @@ void decode(FILE* input, FILE* output) {
    for (int i = 0; i <= tableSize; i++) {
      if (T[i] != NULL) {
        deleteSeq(T[i]);
-     } else {
-       printf(" Here\n");
      }
    }
    free(T);
