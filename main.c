@@ -10,10 +10,10 @@ int main(int argc, char* argv[]){
 	int isEncode = false;
 	int isDecode = false;
 
-	FILE* input;
-	FILE* output;
+	FILE* input = NULL;
+	FILE* output = NULL;
 
-	for (int i = 1; i < (argc - 1); i++) {
+	for (int i = 1; i < argc; i++) {
        if (strcmp("-encode", argv[i]) == 0) {
     			isEncode = true;
           continue;
@@ -31,12 +31,31 @@ int main(int argc, char* argv[]){
           continue;
        }
    }
+
+	 if ((input == NULL) | (output == NULL) ) {
+	 		fprintf(stderr, "%s\n", "Input file does not exist. Or output name not specified");
+			if (input != NULL) {
+				fclose(input);
+			}
+			if (output != NULL) {
+				fclose(output);
+			}
+			exit(1);
+	 }
+	 if (isEncode == isDecode) {
+	 	fprintf(stderr, "%s\n", "Invalid Option");
+		fclose(input);
+		fclose(output);
+		exit(1);
+	 }
+
 	 if (isEncode) {
 	 	encode(input, output);
 	 }
-	 else if (isDecode) {
-		decode(input, output);
+	 else {
+		 decode(input, output);
 	 }
+
 	fclose(input);
 	fclose(output);
 	return 0;

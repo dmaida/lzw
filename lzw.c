@@ -62,13 +62,26 @@ void decode(FILE* input, FILE* output) {
 
   unsigned int bits = 0;
   readBits(inBits, &bits);
-
-  unsigned int previousCode = bits;
-  outSeq(output, T[previousCode]);
-
   int count = 256;
 
+  unsigned int previousCode = bits;
+  if (previousCode > 256) {
+    fprintf(stderr, "%s\n", "Corrupted file.");
+    deleteBits(inBits);
+    for (int i = 0; i <= tableSize; i++) {
+      if (T[i] != NULL) {
+        deleteSeq(T[i]);
+      }
+    }
+    free(T);
+    fclose(input);
+    fclose(output);
+    exit(1);
+  }
+  outSeq(output, T[previousCode]);
+
   while (readBits(inBits, &bits)) {
+
      unsigned int currentCode = bits;
      char c;
      if (T[currentCode] != NULL) {
@@ -80,6 +93,19 @@ void decode(FILE* input, FILE* output) {
      Sequence* W = copySequence(T[previousCode]);
      W = appendSeq(W, c);
      T[count] = W;
+     if (previousCode > count) {
+       fprintf(stderr, "%s\n", "Corrupted file.");
+       deleteBits(inBits);
+       for (int i = 0; i <= tableSize; i++) {
+         if (T[i] != NULL) {
+           deleteSeq(T[i]);
+         }
+       }
+       free(T);
+       fclose(input);
+       fclose(output);
+       exit(1);
+     }
      count++;
    }
      outSeq(output, T[currentCode]);
