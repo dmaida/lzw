@@ -1,7 +1,6 @@
 #ifndef SEQ_H
 #define SEQ_H
 
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,7 +13,7 @@ typedef struct _sequence{
     char* key;
 } Sequence;
 
-Sequence* newSequence(char* key);
+Sequence* newSequence(char key);
 
 char firstChar(Sequence* seq);
 
@@ -24,7 +23,7 @@ Sequence* appendSeq(Sequence* seq, char ch);
 
 void outSeq(FILE* fd, Sequence* seq);
 
-int cmpSeq(Sequence* firstSeq, Sequence* secondSeq);
+bool cmpSeq(Sequence* firstSeq, Sequence* secondSeq);
 
 unsigned hashCode(Sequence* seq, int hashTableSize);
 

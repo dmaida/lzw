@@ -1,12 +1,12 @@
 #include "seq.h"
-#define Initial_Size 8
+#define INIT_SIZE 16
 
-Sequence* newSequence(char* k) {
+Sequence* newSequence(char k) {
   Sequence* newSequence = (Sequence*) malloc(sizeof(Sequence));
-  newSequence->key = (char*) malloc(strlen(k)+Initial_Size+1);
-  newSequence->size = Initial_Size+1+strlen(k);
-  newSequence->count = strlen(k);
-  strcpy(newSequence->key, k);
+  newSequence->key = (char*) calloc(INIT_SIZE+1, sizeof(char));
+  newSequence->size = INIT_SIZE+1;
+  newSequence->count = 1;
+  newSequence->key[0] = k;
   return newSequence;
 }
 
@@ -16,43 +16,49 @@ char firstChar(Sequence* seq) {
 }
 
 Sequence* copySequence(Sequence* seq) {
-  return newSequence(seq->key);
+  Sequence* dupSeq =  (Sequence*) malloc(sizeof(Sequence));
+  dupSeq->size = seq->size;
+  dupSeq->count = seq->count;
+  char* tempKey = (char*) calloc(seq->size, sizeof(char));
+  for (int i = 0; i < seq->count; i++) {
+    tempKey[i] = seq->key[i];
+  }
+  dupSeq->key = tempKey;
+  //deleteSeq(seq);
+  return dupSeq;
 }
 
 Sequence* appendSeq(Sequence* seq, char ch) {
-
-  char* c = (char*) calloc(16, sizeof(char));
-  c[0] = ch;
-
-  int seqCount = seq->count;
-  int seqSize = seq->size;
-  char* oldKey = seq->key;
-  if (seqCount >= seqSize) {
-    char* newKey = (char*) calloc(2*seqSize+1, sizeof(char));
-    strcpy(newKey, oldKey);
-    strcat(newKey, c);
-    free(oldKey);
+  if (seq->count >= seq->size) {
+    char* newKey = (char*) calloc(2*seq->size, sizeof(char));
+    for (int i = 0; i < seq->count; i++) {
+      newKey[i] = seq->key[i];
+    }
+    free(seq->key);
     seq->key = newKey;
-    seq->size = 2*seqSize+1;
-    seq->count = strlen(newKey);
-    free(newKey);
+    seq->size = 2*seq->size;
   }
-  strcat(oldKey, c);
-  seq->count++;
-  free(c);
+  seq->key[seq->count++] = ch;
   return seq;
 }
 
 void outSeq(FILE* fd, Sequence* seq) {
   char* word = seq->key;
-  for (int i = 0; i < strlen(word) ; i++) {
+  for (int i = 0; i < seq->count; i++) {
       fputc(word[i], fd);
   }
 }
 
-int cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
-  int cmp = strcmp(firstSeq->key,secondSeq->key);
-  return cmp;
+bool cmpSeq(Sequence* firstSeq, Sequence* secondSeq) {
+  if (firstSeq->count != secondSeq->count) {
+    return false;
+  }
+  for (int i = 0; i < firstSeq->count; i++) {
+    if (firstSeq->key[i] != secondSeq->key[i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 void deleteSeq(Sequence* seq) {
@@ -66,7 +72,7 @@ unsigned hashCode(Sequence* seq, int hashTableSize) {
   unsigned char *p = (unsigned char*)key;
 	unsigned h = 0;
 	int i;
-	int len = strlen(key);
+	int len = seq->count;
 
 	for (i = 0; i < len; i++){
 		h = 33 * h + p[i];

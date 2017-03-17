@@ -21,11 +21,9 @@ HashTable* createTable(int size) {
 
 void initializeDict(HashTable* table) {
 	for (unsigned int i =0; i < 256; i++) {
-		char* c =  (char*) calloc(16, sizeof(char));
-		c[0] = (char) i;
+		char c = (char) i;
 		Sequence* seq = newSequence(c);
 		insertHash(table, seq, i);
-		free(c);
 	}
 }
 
@@ -60,7 +58,7 @@ int searchForSeq(HashTable* table, Sequence* seq) {
 	if (!seq->key) return -1;
 	nodeEntry = table->array[hashCode(seq,table->size)];
 	while(nodeEntry) {
-		if(cmpSeq(nodeEntry->word, seq) == 0) {
+		if(cmpSeq(nodeEntry->word, seq)) {
 			return nodeEntry->value;
 		}
 		nodeEntry = nodeEntry->next;

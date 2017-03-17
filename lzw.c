@@ -7,40 +7,32 @@ void encode(FILE* input, FILE* output) {
   initializeDict(table);  //Insert characters 0 through 255
 
   int nextCode = 256;
-
   Bits* outBits = newBits(output);
-
-  int charRead = fgetc(input);
-  char* firstByte = calloc(16, sizeof(char));
-  firstByte[0] = (char) charRead;
-  Sequence* W = newSequence(firstByte);
-  free(firstByte);
-  char* c = (char*) calloc(16, sizeof(char));
+  char c = (char) fgetc(input);
+  int charRead = 0;
+  Sequence* W = newSequence(c);
 
   while((charRead = fgetc(input)) != EOF) {
-    c[0] = (char) charRead;
+    c = (char) charRead;
     Sequence* X = copySequence(W);
-    appendSeq(X, charRead);
+    appendSeq(X, c);
     if (searchForSeq(table, X) != -1) {
-      deleteSeq(W);
       W = copySequence(X);
-      deleteSeq(X);
     } else {
       writeBits(outBits, searchForSeq(table, W));
       if (nextCode <= 0XFFFF) {
         insertHash(table, X , nextCode);
         nextCode++;
       } else {
-          deleteSeq(X);
+          //deleteSeq(X);
       }
-      deleteSeq(W);
+      //deleteSeq(W);
       W = newSequence(c);
     }
   }
   writeBits(outBits, searchForSeq(table, W));
-  deleteSeq(W);
+  //deleteSeq(W);
   deleteBits(outBits);
-  free(c);
 	destruct(table);
 }
 
@@ -50,13 +42,11 @@ void decode(FILE* input, FILE* output) {
 
   Sequence** T = (Sequence**) calloc(tableSize+1, sizeof(Sequence*));
 
-  char* c =  (char*) calloc(16, sizeof(char));
   for (unsigned int i = 0; i < 256; i++) {
-		c[0] = (char) i;
+		char c = (char) i;
 		Sequence* seq = newSequence(c);
     T[i] = seq;
 	}
-  free(c);
 
   Bits* inBits = newBits(input);
 
