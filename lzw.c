@@ -17,21 +17,23 @@ void encode(FILE* input, FILE* output) {
     Sequence* X = copySequence(W);
     appendSeq(X, c);
     if (searchForSeq(table, X) != -1) {
+      deleteSeq(W);
       W = copySequence(X);
+      deleteSeq(X);
     } else {
       writeBits(outBits, searchForSeq(table, W));
       if (nextCode <= 0XFFFF) {
         insertHash(table, X , nextCode);
         nextCode++;
       } else {
-          //deleteSeq(X);
+          deleteSeq(X);
       }
-      //deleteSeq(W);
+      deleteSeq(W);
       W = newSequence(c);
     }
   }
   writeBits(outBits, searchForSeq(table, W));
-  //deleteSeq(W);
+  deleteSeq(W);
   deleteBits(outBits);
 	destruct(table);
 }
