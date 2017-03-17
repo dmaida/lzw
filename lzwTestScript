@@ -1,0 +1,36 @@
+#! /bin/bash
+#
+# Test Script for CS 360 extra credit lzw assignment
+#
+CLASSDIR=/encs_share/cs/class/cs360
+FILE=warpeace
+PROG=lzw
+start=8
+max=19
+
+echo "---------- cleaning student directory --------------------------------"
+make clean
+echo "---------- Building student program $PROG ------------------------------"
+make
+echo "---------- copying $FILE.txt to present working directory ------------"
+cp $CLASSDIR/lib/$FILE.txt $PWD
+echo "---------- encoding using instructor's program --------------------------"
+$CLASSDIR/bin/$PROG -encode -startingBits $start -maximumBits $max -input $FILE.txt  -output $FILE.lzw1 -debug 1
+echo "---------- decoding using instructor's program --------------------------"
+$CLASSDIR/bin/$PROG -decode -startingBits $start -maximumBits $max -input $FILE.lzw1 -output $FILE.out1 -debug 1
+echo "---------- checking for file differences from instructor's program ------"
+diff --brief $FILE.txt $FILE.out1
+echo "---------- done with instructor's program -------------------------------"
+echo "---------- decoding instructor's compressed file with student program ---"
+time $PWD/$PROG -decode -startingBits $start -maximumBits $max -input $FILE.lzw1 -output $FILE.out2
+echo "---------- checking for differences in student decompressed file --------"
+diff --brief $FILE.out1 $FILE.out2
+echo "---------- encoding using student program -------------------------------"
+time $PWD/$PROG -encode -startingBits $start -maximumBits $max -input $FILE.txt  -output $FILE.lzw2
+echo "---------- checking for differences in student compressed file ----------"
+diff --brief $FILE.lzw1 $FILE.lzw2
+echo "---------- Finished, cleaning up ----------------------------------------"
+ls -l $FILE.txt $FILE.lzw1 $FILE.lzw2 $FILE.out1 $FILE.out2
+rm $FILE.txt $FILE.lzw1 $FILE.lzw2 $FILE.out1 $FILE.out2
+echo "---------- Exiting ------------------------------------------------------"
+exit

@@ -1,0 +1,419 @@
+Starting bit size = 16, maximum bit size = 16
+Reading first character '\0x7F'
+Reading character 'E' word: '\0x7F' newWord: '\0x7FE' --> Not found: Outputing 0x7F(16) for '\0x7F'
+				Adding sequence '\0x7FE' to the dictionary with code 0x100
+Reading character 'L' word: 'E' newWord: 'EL' --> Not found: Outputing 0x45(16) for 'E'
+				Adding sequence 'EL' to the dictionary with code 0x101
+Reading character 'F' word: 'L' newWord: 'LF' --> Not found: Outputing 0x4C(16) for 'L'
+				Adding sequence 'LF' to the dictionary with code 0x102
+Reading character '\0x02' word: 'F' newWord: 'F\0x02' --> Not found: Outputing 0x46(16) for 'F'
+				Adding sequence 'F\0x02' to the dictionary with code 0x103
+Reading character '\0x01' word: '\0x02' newWord: '\0x02\0x01' --> Not found: Outputing 0x2(16) for '\0x02'
+				Adding sequence '\0x02\0x01' to the dictionary with code 0x104
+Reading character '\0x01' word: '\0x01' newWord: '\0x01\0x01' --> Not found: Outputing 0x1(16) for '\0x01'
+				Adding sequence '\0x01\0x01' to the dictionary with code 0x105
+Reading character '\0' word: '\0x01' newWord: '\0x01\0' --> Not found: Outputing 0x1(16) for '\0x01'
+				Adding sequence '\0x01\0' to the dictionary with code 0x106
+Reading character '\0' word: '\0' newWord: '\0\0' --> Not found: Outputing 0x0(16) for '\0'
+				Adding sequence '\0\0' to the dictionary with code 0x107
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Not found: Outputing 0x107(16) for '\0\0'
+				Adding sequence '\0\0\0' to the dictionary with code 0x108
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0' to the dictionary with code 0x109
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0x01' word: '\0\0\0\0' newWord: '\0\0\0\0\0x01' --> Not found: Outputing 0x109(16) for '\0\0\0\0'
+				Adding sequence '\0\0\0\0\0x01' to the dictionary with code 0x10A
+Reading character 'Y' word: '\0x01' newWord: '\0x01Y' --> Not found: Outputing 0x1(16) for '\0x01'
+				Adding sequence '\0x01Y' to the dictionary with code 0x10B
+Reading character '5' word: 'Y' newWord: 'Y5' --> Not found: Outputing 0x59(16) for 'Y'
+				Adding sequence 'Y5' to the dictionary with code 0x10C
+Reading character '\0x01' word: '5' newWord: '5\0x01' --> Not found: Outputing 0x35(16) for '5'
+				Adding sequence '5\0x01' to the dictionary with code 0x10D
+Reading character '\0' word: '\0x01' newWord: '\0x01\0' --> Found.
+Reading character '\0' word: '\0x01\0' newWord: '\0x01\0\0' --> Not found: Outputing 0x106(16) for '\0x01\0'
+				Adding sequence '\0x01\0\0' to the dictionary with code 0x10E
+Reading character '\0x02' word: '\0' newWord: '\0\0x02' --> Not found: Outputing 0x0(16) for '\0'
+				Adding sequence '\0\0x02' to the dictionary with code 0x10F
+Reading character '\0x91' word: '\0x02' newWord: '\0x02\0x91' --> Not found: Outputing 0x2(16) for '\0x02'
+				Adding sequence '\0x02\0x91' to the dictionary with code 0x110
+Reading character '@' word: '\0x91' newWord: '\0x91@' --> Not found: Outputing 0x91(16) for '\0x91'
+				Adding sequence '\0x91@' to the dictionary with code 0x111
+Reading character '\0x0E' word: '@' newWord: '@\0x0E' --> Not found: Outputing 0x40(16) for '@'
+				Adding sequence '@\0x0E' to the dictionary with code 0x112
+Reading character '\0' word: '\0x0E' newWord: '\0x0E\0' --> Not found: Outputing 0xE(16) for '\0x0E'
+				Adding sequence '\0x0E\0' to the dictionary with code 0x113
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Not found: Outputing 0x109(16) for '\0\0\0\0'
+				Adding sequence '\0\0\0\0\0' to the dictionary with code 0x114
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0x03' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0x03' --> Not found: Outputing 0x114(16) for '\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0x03' to the dictionary with code 0x115
+Reading character '\0' word: '\0x03' newWord: '\0x03\0' --> Not found: Outputing 0x3(16) for '\0x03'
+				Adding sequence '\0x03\0' to the dictionary with code 0x116
+Reading character '\0x0F' word: '\0' newWord: '\0\0x0F' --> Not found: Outputing 0x0(16) for '\0'
+				Adding sequence '\0\0x0F' to the dictionary with code 0x117
+Reading character '\0' word: '\0x0F' newWord: '\0x0F\0' --> Not found: Outputing 0xF(16) for '\0x0F'
+				Adding sequence '\0x0F\0' to the dictionary with code 0x118
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Not found: Outputing 0x114(16) for '\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0' to the dictionary with code 0x119
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0\0' newWord: '\0\0\0\0\0x02' --> Not found: Outputing 0x109(16) for '\0\0\0\0'
+				Adding sequence '\0\0\0\0\0x02' to the dictionary with code 0x11A
+Reading character '\0' word: '\0x02' newWord: '\0x02\0' --> Not found: Outputing 0x2(16) for '\0x02'
+				Adding sequence '\0x02\0' to the dictionary with code 0x11B
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x13' word: '\0\0\0' newWord: '\0\0\0\0x13' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0x13' to the dictionary with code 0x11C
+Reading character '\0' word: '\0x13' newWord: '\0x13\0' --> Not found: Outputing 0x13(16) for '\0x13'
+				Adding sequence '\0x13\0' to the dictionary with code 0x11D
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0xFC' word: '\0\0\0' newWord: '\0\0\0\0xFC' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0xFC' to the dictionary with code 0x11E
+Reading character '\0xFF' word: '\0xFC' newWord: '\0xFC\0xFF' --> Not found: Outputing 0xFC(16) for '\0xFC'
+				Adding sequence '\0xFC\0xFF' to the dictionary with code 0x11F
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Not found: Outputing 0xFF(16) for '\0xFF'
+				Adding sequence '\0xFF\0xFF' to the dictionary with code 0x120
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Not found: Outputing 0x120(16) for '\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF' to the dictionary with code 0x121
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF' --> Not found: Outputing 0x121(16) for '\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF\0xFF' to the dictionary with code 0x122
+Reading character '\0xCF' word: '\0xFF' newWord: '\0xFF\0xCF' --> Not found: Outputing 0xFF(16) for '\0xFF'
+				Adding sequence '\0xFF\0xCF' to the dictionary with code 0x123
+Reading character '\0' word: '\0xCF' newWord: '\0xCF\0' --> Not found: Outputing 0xCF(16) for '\0xCF'
+				Adding sequence '\0xCF\0' to the dictionary with code 0x124
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0' --> Not found: Outputing 0x119(16) for '\0\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0\0' to the dictionary with code 0x125
+Reading character '\0x02' word: '\0' newWord: '\0\0x02' --> Found.
+Reading character '\0' word: '\0\0x02' newWord: '\0\0x02\0' --> Not found: Outputing 0x10F(16) for '\0\0x02'
+				Adding sequence '\0\0x02\0' to the dictionary with code 0x126
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x15' word: '\0\0\0' newWord: '\0\0\0\0x15' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0x15' to the dictionary with code 0x127
+Reading character '\0' word: '\0x15' newWord: '\0x15\0' --> Not found: Outputing 0x15(16) for '\0x15'
+				Adding sequence '\0x15\0' to the dictionary with code 0x128
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0xFC' word: '\0\0\0' newWord: '\0\0\0\0xFC' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC' newWord: '\0\0\0\0xFC\0xFF' --> Not found: Outputing 0x11E(16) for '\0\0\0\0xFC'
+				Adding sequence '\0\0\0\0xFC\0xFF' to the dictionary with code 0x129
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF\0xFF' --> Not found: Outputing 0x122(16) for '\0xFF\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF\0xFF\0xFF' to the dictionary with code 0x12A
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xE9' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xE9' --> Not found: Outputing 0x121(16) for '\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF\0xE9' to the dictionary with code 0x12B
+Reading character '\0' word: '\0xE9' newWord: '\0xE9\0' --> Not found: Outputing 0xE9(16) for '\0xE9'
+				Adding sequence '\0xE9\0' to the dictionary with code 0x12C
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0\0x02' --> Not found: Outputing 0x125(16) for '\0\0\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0\0\0x02' to the dictionary with code 0x12D
+Reading character '\0' word: '\0x02' newWord: '\0x02\0' --> Found.
+Reading character '\0' word: '\0x02\0' newWord: '\0x02\0\0' --> Not found: Outputing 0x11B(16) for '\0x02\0'
+				Adding sequence '\0x02\0\0' to the dictionary with code 0x12E
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0x16' word: '\0\0' newWord: '\0\0\0x16' --> Not found: Outputing 0x107(16) for '\0\0'
+				Adding sequence '\0\0\0x16' to the dictionary with code 0x12F
+Reading character '\0' word: '\0x16' newWord: '\0x16\0' --> Not found: Outputing 0x16(16) for '\0x16'
+				Adding sequence '\0x16\0' to the dictionary with code 0x130
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0xFC' word: '\0\0\0' newWord: '\0\0\0\0xFC' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC' newWord: '\0\0\0\0xFC\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF' --> Not found: Outputing 0x129(16) for '\0\0\0\0xFC\0xFF'
+				Adding sequence '\0\0\0\0xFC\0xFF\0xFF' to the dictionary with code 0x131
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF\0xFF\0xFF' --> Not found: Outputing 0x12A(16) for '\0xFF\0xFF\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF\0xFF\0xFF\0xFF' to the dictionary with code 0x132
+Reading character '\0xF5' word: '\0xFF' newWord: '\0xFF\0xF5' --> Not found: Outputing 0xFF(16) for '\0xFF'
+				Adding sequence '\0xFF\0xF5' to the dictionary with code 0x133
+Reading character '\0' word: '\0xF5' newWord: '\0xF5\0' --> Not found: Outputing 0xF5(16) for '\0xF5'
+				Adding sequence '\0xF5\0' to the dictionary with code 0x134
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0\0x02' --> Found.
+Reading character '\0' word: '\0\0\0\0\0\0\0\0x02' newWord: '\0\0\0\0\0\0\0\0x02\0' --> Not found: Outputing 0x12D(16) for '\0\0\0\0\0\0\0\0x02'
+				Adding sequence '\0\0\0\0\0\0\0\0x02\0' to the dictionary with code 0x135
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x17' word: '\0\0\0' newWord: '\0\0\0\0x17' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0x17' to the dictionary with code 0x136
+Reading character '\0' word: '\0x17' newWord: '\0x17\0' --> Not found: Outputing 0x17(16) for '\0x17'
+				Adding sequence '\0x17\0' to the dictionary with code 0x137
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0xFC' word: '\0\0\0' newWord: '\0\0\0\0xFC' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC' newWord: '\0\0\0\0xFC\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF\0xFF' --> Not found: Outputing 0x131(16) for '\0\0\0\0xFC\0xFF\0xFF'
+				Adding sequence '\0\0\0\0xFC\0xFF\0xFF\0xFF' to the dictionary with code 0x138
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character 'o' word: '\0xFF\0xFF\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF\0xFFo' --> Not found: Outputing 0x12A(16) for '\0xFF\0xFF\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF\0xFF\0xFFo' to the dictionary with code 0x139
+Reading character '\0x01' word: 'o' newWord: 'o\0x01' --> Not found: Outputing 0x6F(16) for 'o'
+				Adding sequence 'o\0x01' to the dictionary with code 0x13A
+Reading character '\0' word: '\0x01' newWord: '\0x01\0' --> Found.
+Reading character '\0' word: '\0x01\0' newWord: '\0x01\0\0' --> Found.
+Reading character '\0' word: '\0x01\0\0' newWord: '\0x01\0\0\0' --> Not found: Outputing 0x10E(16) for '\0x01\0\0'
+				Adding sequence '\0x01\0\0\0' to the dictionary with code 0x13B
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0\0' newWord: '\0\0\0\0\0x02' --> Found.
+Reading character '\0' word: '\0\0\0\0\0x02' newWord: '\0\0\0\0\0x02\0' --> Not found: Outputing 0x11A(16) for '\0\0\0\0\0x02'
+				Adding sequence '\0\0\0\0\0x02\0' to the dictionary with code 0x13C
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x19' word: '\0\0\0' newWord: '\0\0\0\0x19' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0x19' to the dictionary with code 0x13D
+Reading character '\0' word: '\0x19' newWord: '\0x19\0' --> Not found: Outputing 0x19(16) for '\0x19'
+				Adding sequence '\0x19\0' to the dictionary with code 0x13E
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0xFC' word: '\0\0\0' newWord: '\0\0\0\0xFC' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC' newWord: '\0\0\0\0xFC\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF\0xFF\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF' --> Not found: Outputing 0x138(16) for '\0\0\0\0xFC\0xFF\0xFF\0xFF'
+				Adding sequence '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF' to the dictionary with code 0x13F
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0x92' word: '\0xFF\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF\0xFF\0x92' --> Not found: Outputing 0x122(16) for '\0xFF\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF\0xFF\0x92' to the dictionary with code 0x140
+Reading character '\0x01' word: '\0x92' newWord: '\0x92\0x01' --> Not found: Outputing 0x92(16) for '\0x92'
+				Adding sequence '\0x92\0x01' to the dictionary with code 0x141
+Reading character '\0' word: '\0x01' newWord: '\0x01\0' --> Found.
+Reading character '\0' word: '\0x01\0' newWord: '\0x01\0\0' --> Found.
+Reading character '\0' word: '\0x01\0\0' newWord: '\0x01\0\0\0' --> Found.
+Reading character '\0' word: '\0x01\0\0\0' newWord: '\0x01\0\0\0\0' --> Not found: Outputing 0x13B(16) for '\0x01\0\0\0'
+				Adding sequence '\0x01\0\0\0\0' to the dictionary with code 0x142
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0' newWord: '\0\0\0\0x02' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0x02' to the dictionary with code 0x143
+Reading character '\0' word: '\0x02' newWord: '\0x02\0' --> Found.
+Reading character '\0' word: '\0x02\0' newWord: '\0x02\0\0' --> Found.
+Reading character '\0' word: '\0x02\0\0' newWord: '\0x02\0\0\0' --> Not found: Outputing 0x12E(16) for '\0x02\0\0'
+				Adding sequence '\0x02\0\0\0' to the dictionary with code 0x144
+Reading character '\0x10' word: '\0' newWord: '\0\0x10' --> Not found: Outputing 0x0(16) for '\0'
+				Adding sequence '\0\0x10' to the dictionary with code 0x145
+Reading character '\0' word: '\0x10' newWord: '\0x10\0' --> Not found: Outputing 0x10(16) for '\0x10'
+				Adding sequence '\0x10\0' to the dictionary with code 0x146
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\n' word: '\0\0\0' newWord: '\0\0\0\n' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\n' to the dictionary with code 0x147
+Reading character '\0' word: '\n' newWord: '\n\0' --> Not found: Outputing 0xA(16) for '\n'
+				Adding sequence '\n\0' to the dictionary with code 0x148
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\b' word: '\0\0\0' newWord: '\0\0\0\b' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\b' to the dictionary with code 0x149
+Reading character '\0' word: '\b' newWord: '\b\0' --> Not found: Outputing 0x8(16) for '\b'
+				Adding sequence '\b\0' to the dictionary with code 0x14A
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x0F' word: '\0\0\0' newWord: '\0\0\0\0x0F' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\0x0F' to the dictionary with code 0x14B
+Reading character '\0' word: '\0x0F' newWord: '\0x0F\0' --> Found.
+Reading character '\0' word: '\0x0F\0' newWord: '\0x0F\0\0' --> Not found: Outputing 0x118(16) for '\0x0F\0'
+				Adding sequence '\0x0F\0\0' to the dictionary with code 0x14C
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Reading character '\t' word: '\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\t' --> Not found: Outputing 0x119(16) for '\0\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0\t' to the dictionary with code 0x14D
+Reading character '\0x06' word: '\t' newWord: '\t\0x06' --> Not found: Outputing 0x9(16) for '\t'
+				Adding sequence '\t\0x06' to the dictionary with code 0x14E
+Reading character '\0' word: '\0x06' newWord: '\0x06\0' --> Not found: Outputing 0x6(16) for '\0x06'
+				Adding sequence '\0x06\0' to the dictionary with code 0x14F
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0x02' --> Not found: Outputing 0x119(16) for '\0\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0\0x02' to the dictionary with code 0x150
+Reading character '\0' word: '\0x02' newWord: '\0x02\0' --> Found.
+Reading character '\0' word: '\0x02\0' newWord: '\0x02\0\0' --> Found.
+Reading character '\0' word: '\0x02\0\0' newWord: '\0x02\0\0\0' --> Found.
+Reading character ' ' word: '\0x02\0\0\0' newWord: '\0x02\0\0\0 ' --> Not found: Outputing 0x144(16) for '\0x02\0\0\0'
+				Adding sequence '\0x02\0\0\0 ' to the dictionary with code 0x151
+Reading character '\0' word: ' ' newWord: ' \0' --> Not found: Outputing 0x20(16) for ' '
+				Adding sequence ' \0' to the dictionary with code 0x152
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0xFC' word: '\0\0\0' newWord: '\0\0\0\0xFC' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC' newWord: '\0\0\0\0xFC\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF\0xFF\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF' newWord: '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF\0xFF' --> Not found: Outputing 0x13F(16) for '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF'
+				Adding sequence '\0\0\0\0xFC\0xFF\0xFF\0xFF\0xFF\0xFF' to the dictionary with code 0x153
+Reading character '\0xFF' word: '\0xFF' newWord: '\0xFF\0xFF' --> Found.
+Reading character '\0xFF' word: '\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF' --> Found.
+Reading character '"' word: '\0xFF\0xFF\0xFF' newWord: '\0xFF\0xFF\0xFF"' --> Not found: Outputing 0x121(16) for '\0xFF\0xFF\0xFF'
+				Adding sequence '\0xFF\0xFF\0xFF"' to the dictionary with code 0x154
+Reading character '\0x06' word: '"' newWord: '"\0x06' --> Not found: Outputing 0x22(16) for '"'
+				Adding sequence '"\0x06' to the dictionary with code 0x155
+Reading character '\0' word: '\0x06' newWord: '\0x06\0' --> Found.
+Reading character '\0' word: '\0x06\0' newWord: '\0x06\0\0' --> Not found: Outputing 0x14F(16) for '\0x06\0'
+				Adding sequence '\0x06\0\0' to the dictionary with code 0x156
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\n' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\n' --> Not found: Outputing 0x114(16) for '\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\n' to the dictionary with code 0x157
+Reading character '\0' word: '\n' newWord: '\n\0' --> Found.
+Reading character '\0' word: '\n\0' newWord: '\n\0\0' --> Not found: Outputing 0x148(16) for '\n\0'
+				Adding sequence '\n\0\0' to the dictionary with code 0x158
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\b' word: '\0\0' newWord: '\0\0\b' --> Not found: Outputing 0x107(16) for '\0\0'
+				Adding sequence '\0\0\b' to the dictionary with code 0x159
+Reading character '\0' word: '\b' newWord: '\b\0' --> Found.
+Reading character '\0' word: '\b\0' newWord: '\b\0\0' --> Not found: Outputing 0x14A(16) for '\b\0'
+				Adding sequence '\b\0\0' to the dictionary with code 0x15A
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0x12' word: '\0\0' newWord: '\0\0\0x12' --> Not found: Outputing 0x107(16) for '\0\0'
+				Adding sequence '\0\0\0x12' to the dictionary with code 0x15B
+Reading character '\0' word: '\0x12' newWord: '\0x12\0' --> Not found: Outputing 0x12(16) for '\0x12'
+				Adding sequence '\0x12\0' to the dictionary with code 0x15C
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\0' --> Found.
+Reading character '2' word: '\0\0\0\0\0\0\0' newWord: '\0\0\0\0\0\0\02' --> Not found: Outputing 0x125(16) for '\0\0\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0\0\02' to the dictionary with code 0x15D
+Reading character '\0x06' word: '2' newWord: '2\0x06' --> Not found: Outputing 0x32(16) for '2'
+				Adding sequence '2\0x06' to the dictionary with code 0x15E
+Reading character '\0' word: '\0x06' newWord: '\0x06\0' --> Found.
+Reading character '\0' word: '\0x06\0' newWord: '\0x06\0\0' --> Found.
+Reading character '\0' word: '\0x06\0\0' newWord: '\0x06\0\0\0' --> Not found: Outputing 0x156(16) for '\0x06\0\0'
+				Adding sequence '\0x06\0\0\0' to the dictionary with code 0x15F
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0\0' newWord: '\0\0\0\0\0x02' --> Found.
+Reading character '\0' word: '\0\0\0\0\0x02' newWord: '\0\0\0\0\0x02\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0x02\0' newWord: '\0\0\0\0\0x02\0\0' --> Not found: Outputing 0x13C(16) for '\0\0\0\0\0x02\0'
+				Adding sequence '\0\0\0\0\0x02\0\0' to the dictionary with code 0x160
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character ' ' word: '\0\0' newWord: '\0\0 ' --> Not found: Outputing 0x107(16) for '\0\0'
+				Adding sequence '\0\0 ' to the dictionary with code 0x161
+Reading character '\0' word: ' ' newWord: ' \0' --> Found.
+Reading character '\0' word: ' \0' newWord: ' \0\0' --> Not found: Outputing 0x152(16) for ' \0'
+				Adding sequence ' \0\0' to the dictionary with code 0x162
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0x02' word: '\0\0' newWord: '\0\0\0x02' --> Not found: Outputing 0x107(16) for '\0\0'
+				Adding sequence '\0\0\0x02' to the dictionary with code 0x163
+Reading character '\0' word: '\0x02' newWord: '\0x02\0' --> Found.
+Reading character '\0' word: '\0x02\0' newWord: '\0x02\0\0' --> Found.
+Reading character '\0' word: '\0x02\0\0' newWord: '\0x02\0\0\0' --> Found.
+Reading character '\0x02' word: '\0x02\0\0\0' newWord: '\0x02\0\0\0\0x02' --> Not found: Outputing 0x144(16) for '\0x02\0\0\0'
+				Adding sequence '\0x02\0\0\0\0x02' to the dictionary with code 0x164
+Reading character '\0' word: '\0x02' newWord: '\0x02\0' --> Found.
+Reading character '\0' word: '\0x02\0' newWord: '\0x02\0\0' --> Found.
+Reading character '\0' word: '\0x02\0\0' newWord: '\0x02\0\0\0' --> Found.
+Reading character '\0xD5' word: '\0x02\0\0\0' newWord: '\0x02\0\0\0\0xD5' --> Not found: Outputing 0x144(16) for '\0x02\0\0\0'
+				Adding sequence '\0x02\0\0\0\0xD5' to the dictionary with code 0x165
+Reading character '\0x03' word: '\0xD5' newWord: '\0xD5\0x03' --> Not found: Outputing 0xD5(16) for '\0xD5'
+				Adding sequence '\0xD5\0x03' to the dictionary with code 0x166
+Reading character '\0' word: '\0x03' newWord: '\0x03\0' --> Found.
+Reading character '\0' word: '\0x03\0' newWord: '\0x03\0\0' --> Not found: Outputing 0x116(16) for '\0x03\0'
+				Adding sequence '\0x03\0\0' to the dictionary with code 0x167
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '$' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0$' --> Not found: Outputing 0x114(16) for '\0\0\0\0\0'
+				Adding sequence '\0\0\0\0\0$' to the dictionary with code 0x168
+Reading character '\0x01' word: '$' newWord: '$\0x01' --> Not found: Outputing 0x24(16) for '$'
+				Adding sequence '$\0x01' to the dictionary with code 0x169
+Reading character '\0' word: '\0x01' newWord: '\0x01\0' --> Found.
+Reading character '\0' word: '\0x01\0' newWord: '\0x01\0\0' --> Found.
+Reading character '\0' word: '\0x01\0\0' newWord: '\0x01\0\0\0' --> Found.
+Reading character '\0' word: '\0x01\0\0\0' newWord: '\0x01\0\0\0\0' --> Found.
+Reading character '\0' word: '\0x01\0\0\0\0' newWord: '\0x01\0\0\0\0\0' --> Not found: Outputing 0x142(16) for '\0x01\0\0\0\0'
+				Adding sequence '\0x01\0\0\0\0\0' to the dictionary with code 0x16A
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0x02' word: '\0\0' newWord: '\0\0\0x02' --> Found.
+Reading character '\0' word: '\0\0\0x02' newWord: '\0\0\0x02\0' --> Not found: Outputing 0x163(16) for '\0\0\0x02'
+				Adding sequence '\0\0\0x02\0' to the dictionary with code 0x16B
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0x02' word: '\0\0\0' newWord: '\0\0\0\0x02' --> Found.
+Reading character '\0' word: '\0\0\0\0x02' newWord: '\0\0\0\0x02\0' --> Not found: Outputing 0x143(16) for '\0\0\0\0x02'
+				Adding sequence '\0\0\0\0x02\0' to the dictionary with code 0x16C
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\' word: '\0\0\0' newWord: '\0\0\0\' --> Not found: Outputing 0x108(16) for '\0\0\0'
+				Adding sequence '\0\0\0\' to the dictionary with code 0x16D
+Reading character '\0x05' word: '\' newWord: '\\0x05' --> Not found: Outputing 0x5C(16) for '\'
+				Adding sequence '\\0x05' to the dictionary with code 0x16E
+Reading character '\0' word: '\0x05' newWord: '\0x05\0' --> Not found: Outputing 0x5(16) for '\0x05'
+				Adding sequence '\0x05\0' to the dictionary with code 0x16F
+Reading character '\0' word: '\0' newWord: '\0\0' --> Found.
+Reading character '\0' word: '\0\0' newWord: '\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0' newWord: '\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0' newWord: '\0\0\0\0\0' --> Found.
+Reading character '\0' word: '\0\0\0\0\0' newWord: '\0\0\0\0\0\0' --> Found.
+Output 0x119(16) for '\0\0\0\0\0\0' ENDing encoding
+Dictionary Stats:
+	Hash Table Size:                                 999983
+	Number of key/value pairs:                          368
+	Average number of collisions:                      0.00
+	Standard Deviation of collisions:                  0.02
+	Maximum number of collisions:                         1
+	Positions with  1 collisions:                       368
+	Positions with  0 collisions:                    999615
+296 bytes read, 226 bytes written: 76.4% change in size.
