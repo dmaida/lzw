@@ -21,7 +21,8 @@ void encode(FILE* input, FILE* output) {
       W = copySequence(X);
       deleteSeq(X);
     } else {
-      writeBits(outBits, searchForSeq(table, W));
+      //writeBits(outBits, searchForSeq(table, W));
+      putBits(outBits, 16, searchForSeq(table, W));
       if (nextCode <= 0XFFFF) {
         insertHash(table, X , nextCode);
         nextCode++;
@@ -32,7 +33,8 @@ void encode(FILE* input, FILE* output) {
       W = newSequence(c);
     }
   }
-  writeBits(outBits, searchForSeq(table, W));
+  //writeBits(outBits, searchForSeq(table, W));
+  putBits(outBits, 16, searchForSeq(table, W));
   deleteSeq(W);
   deleteBits(outBits);
 	destruct(table);

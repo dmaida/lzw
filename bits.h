@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
+#include <limits.h>
 
 typedef struct _bits {
   unsigned int extraBits; //remainding bits
@@ -22,5 +23,6 @@ bool writeBits(Bits* b, unsigned int bits);
 
 bool flushBits(Bits* b);
 
+void putBits(Bits* b, int nBits, int code);
 
 #endif
