@@ -2,7 +2,7 @@
 
 #define INITIAL_TABLE_SIZE 1000000
 
-void encode(FILE* input, FILE* output) {
+void encode(FILE* input, FILE* output, int startBits, int maxBits) {
   HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
   initializeDict(table);  //Insert characters 0 through 255
 
@@ -40,7 +40,7 @@ void encode(FILE* input, FILE* output) {
 	destruct(table);
 }
 
-void decode(FILE* input, FILE* output) {
+void decode(FILE* input, FILE* output,int startBits, int maxBits) {
 
   int tableSize = 0XFFFF;
 
@@ -55,8 +55,10 @@ void decode(FILE* input, FILE* output) {
   Bits* inBits = newBits(input);
 
   unsigned int bits = 0;
-  readBits(inBits, &bits);
-  int count = 256;
+  //readBits(inBits, &bits);
+  getBits(inBits, 16, &bits);
+
+  unsigned int count = 256;
 
   unsigned int previousCode = bits;
   if (previousCode > 256) {
@@ -74,8 +76,7 @@ void decode(FILE* input, FILE* output) {
   }
   outSeq(output, T[previousCode]);
 
-  while (readBits(inBits, &bits)) {
-
+  while (getBits(inBits, 16, &bits)) {
      unsigned int currentCode = bits;
      char c;
      if (T[currentCode] != NULL) {

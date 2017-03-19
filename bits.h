@@ -25,4 +25,9 @@ bool flushBits(Bits* b);
 
 void putBits(Bits* b, int nBits, int code);
 
+bool getBits(Bits* b, int nBits, unsigned int *bits);
+
+void sendRemainingBits(Bits* b);
+
+
 #endif
