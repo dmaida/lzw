@@ -41,6 +41,14 @@ Sequence* appendSeq(Sequence* seq, char ch) {
   return seq;
 }
 
+void printSeq(Sequence* seq) {
+  char* word = seq->key;
+  for (int i = 0; i < seq->count; i++) {
+      printf("%c", word[i]);
+  }
+  printf("\n");
+}
+
 void outSeq(FILE* fd, Sequence* seq) {
   char* word = seq->key;
   for (int i = 0; i < seq->count; i++) {
