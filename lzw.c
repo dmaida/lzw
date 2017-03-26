@@ -67,7 +67,7 @@ void decode(FILE* input, FILE* output, int startBits, int maxBits) {
   unsigned int count = 256;
 
   unsigned int previousCode = bits;
-
+/*
   if (previousCode > 256) {
     fprintf(stderr, "%s\n", "Corrupted file.");
     deleteBits(inBits);
@@ -81,15 +81,16 @@ void decode(FILE* input, FILE* output, int startBits, int maxBits) {
     fclose(output);
     exit(1);
   }
+  */
   outSeq(output, T[previousCode]);
 
-  if (count == (1<<startBits) ) {
+  if (count == (1<<startBits) && startBits < maxBits ) {
     //printf("%s\n", "Increasing code length");
     startBits++;
   }
 
   while (getBits(inBits, startBits, &bits)) {
-    if (count+1 == (1<<startBits) ) {
+    if (count+1 == (1<<startBits)  && startBits < maxBits) {
       //printf("%s\n", "Increasing code length");
       startBits++;
     }
