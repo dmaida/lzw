@@ -1,8 +1,21 @@
 #include "lzw.h"
 
-#define INITIAL_TABLE_SIZE 1000000
+#define INITIAL_TABLE_SIZE 999983
+
+void printBinary(int n) {
+  while (n) {
+    if (n & 1)
+        printf("1");
+    else
+        printf("0");
+
+    n >>= 1;
+  }
+  printf("\n");
+}
 
 void encode(FILE* input, FILE* output, int startBits, int maxBits) {
+
   HashTable* table = createTable(INITIAL_TABLE_SIZE);  //Initialize dictionary D
   initializeDict(table);  //Insert characters 0 through 255
 
@@ -22,19 +35,34 @@ void encode(FILE* input, FILE* output, int startBits, int maxBits) {
       deleteSeq(X);
     } else {
       //writeBits(outBits, searchForSeq(table, W));
-      putBits(outBits, 16, searchForSeq(table, W));
-      if (nextCode <= 0XFFFF) {
+      unsigned int n = searchForSeq(table, W);
+      
+      putBits(outBits, startBits, n);
+
+      if (nextCode == (1<<startBits) && startBits < maxBits) {
+        printf("%s\n", "Increasing bits");
+        startBits++;
+      }
+
+      if (nextCode < (1<<startBits)) {
         insertHash(table, X , nextCode);
         nextCode++;
-      } else {
-          deleteSeq(X);
       }
+
+
+/*
+      if (nextCode == pow(2, startBits)+1 && (startBits+1) <= maxBits) {
+        printf("%s\n", "Increasing bit size");
+        startBits++;
+      }
+*/
       deleteSeq(W);
       W = newSequence(c);
     }
   }
   //writeBits(outBits, searchForSeq(table, W));
-  putBits(outBits, 16, searchForSeq(table, W));
+  putBits(outBits, startBits, searchForSeq(table, W));
+  sendRemainingBits(outBits);
   deleteSeq(W);
   deleteBits(outBits);
 	destruct(table);

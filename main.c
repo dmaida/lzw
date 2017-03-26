@@ -22,6 +22,9 @@ int main(int argc, char* argv[]){
 	int isEncode = false;
 	int isDecode = false;
 
+	int startingBits = 16;
+	int maximumBits = 16;
+
 	FILE* input = NULL;
 	FILE* output = NULL;
 
@@ -40,6 +43,14 @@ int main(int argc, char* argv[]){
        }
 			 if (strcmp("-output", argv[i]) == 0) {
           output = fopen(argv[i+1], "w");
+          continue;
+       }
+			 if (strcmp("-startingBits", argv[i]) == 0) {
+          startingBits = atoi(argv[i+1]);
+          continue;
+       }
+			 if (strcmp("-maximumBits", argv[i]) == 0) {
+          maximumBits = atoi(argv[i+1]);
           continue;
        }
    }
@@ -64,10 +75,10 @@ int main(int argc, char* argv[]){
 	 }
 
 	 if (isEncode) {
-	 	encode(input, output, 16, 16);
+	 	encode(input, output, startingBits, maximumBits);
 	 }
 	 else {
-		 decode(input, output, 16, 16);
+		 decode(input, output, startingBits, maximumBits);
 	 }
 
 	fclose(input);

@@ -2,7 +2,7 @@
 CFLAGS= -std=c99 -Wall -pedantic
 
 lzw: hash.o seq.o bits.o lzw.o main.o
-	gcc -g hash.o seq.o bits.o lzw.o main.o -o lzw
+	gcc -g hash.o seq.o bits.o lzw.o main.o -o lzw -lm
 
 hash.o: hash.c hash.h seq.h
 	gcc -g -c $(CFLAGS) hash.c

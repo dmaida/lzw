@@ -45,6 +45,7 @@ void putBits(Bits* b, int nBits, int code){
   code &= (1 << nBits) - 1;
 
   overflow = (overflow << nBits) | code;
+
   while (numOverflow >= CHAR_BIT) {
   	numOverflow -= CHAR_BIT;
   	c = overflow >> numOverflow;

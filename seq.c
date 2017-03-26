@@ -24,7 +24,6 @@ Sequence* copySequence(Sequence* seq) {
     tempKey[i] = seq->key[i];
   }
   dupSeq->key = tempKey;
-  //deleteSeq(seq);
   return dupSeq;
 }
 
