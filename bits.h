@@ -17,15 +17,11 @@ Bits* newBits(FILE* fd);
 
 void deleteBits(Bits* b);
 
-bool readBits(Bits* b, unsigned int *bits);
-
-bool writeBits(Bits* b, unsigned int bits);
-
 bool flushBits(Bits* b);
 
-void putBits(Bits* b, int nBits, int code);
+void writeBits(Bits* b, int nBits, int code);
 
-bool getBits(Bits* b, int nBits, unsigned int *bits);
+bool readBits(Bits* b, int nBits, unsigned int *bits);
 
 void sendRemainingBits(Bits* b);
 

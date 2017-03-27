@@ -15,30 +15,7 @@ void deleteBits(Bits* b) {
   free(b);
 }
 
-bool readBits(Bits* b, unsigned int *bits) {
-  unsigned int code = 0;
-  int firstByte = fgetc(b->fd);
-  int secondByte = fgetc(b->fd);
-  code = (firstByte << 8) | secondByte;
-  *bits = code;
-  if (firstByte == EOF) {
-    return false;
-  }
-  if (secondByte == EOF) {
-    return false;
-  }
-  return true;
-}
-
-bool writeBits(Bits* b,  unsigned int bits) {
-  unsigned int firstByte = (bits >> 8) & 0xFF;
-  unsigned int secondByte = bits & 0xFF;
-  fputc(firstByte, b->fd);
-  fputc(secondByte, b->fd);
-  return true;
-}
-
-void putBits(Bits* b, int nBits, int code){
+void writeBits(Bits* b, int nBits, int code){
   unsigned int c;
 
   numOverflow += nBits;
@@ -54,7 +31,7 @@ void putBits(Bits* b, int nBits, int code){
   }
 }
 
-bool getBits(Bits* b, int nBits, unsigned int *bits) {
+bool readBits(Bits* b, int nBits, unsigned int *bits) {
     int c;
     static int numOverflow = 0;
     static int unsigned overflow = 0;

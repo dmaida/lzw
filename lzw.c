@@ -22,7 +22,7 @@ void encode(FILE* input, FILE* output, int startBits, int maxBits) {
       W = copySequence(X);
       deleteSeq(X);
     } else {
-      putBits(outBits, startBits, searchForSeq(table, W));
+      writeBits(outBits, startBits, searchForSeq(table, W));
 
       if (nextCode == (1<<startBits) && startBits < maxBits) {
         startBits++;
@@ -39,7 +39,7 @@ void encode(FILE* input, FILE* output, int startBits, int maxBits) {
       W = newSequence(c);
     }
   }
-  putBits(outBits, startBits, searchForSeq(table, W));
+  writeBits(outBits, startBits, searchForSeq(table, W));
   sendRemainingBits(outBits);
   deleteSeq(W);
   deleteBits(outBits);
@@ -61,14 +61,13 @@ void decode(FILE* input, FILE* output, int startBits, int maxBits) {
   Bits* inBits = newBits(input);
 
   unsigned int bits = 0;
-  //readBits(inBits, &bits);
-  getBits(inBits, startBits, &bits);
+  readBits(inBits, startBits, &bits);
 
   unsigned int count = 256;
 
   unsigned int previousCode = bits;
-/*
-  if (previousCode > 256) {
+
+  if (previousCode > count) {
     fprintf(stderr, "%s\n", "Corrupted file.");
     deleteBits(inBits);
     for (int i = 0; i <= tableSize; i++) {
@@ -81,17 +80,14 @@ void decode(FILE* input, FILE* output, int startBits, int maxBits) {
     fclose(output);
     exit(1);
   }
-  */
   outSeq(output, T[previousCode]);
 
   if (count == (1<<startBits) && startBits < maxBits ) {
-    //printf("%s\n", "Increasing code length");
     startBits++;
   }
 
-  while (getBits(inBits, startBits, &bits)) {
+  while (readBits(inBits, startBits, &bits)) {
     if (count+1 == (1<<startBits)  && startBits < maxBits) {
-      //printf("%s\n", "Increasing code length");
       startBits++;
     }
     unsigned int currentCode = bits;
@@ -106,17 +102,37 @@ void decode(FILE* input, FILE* output, int startBits, int maxBits) {
       W = appendSeq(W, c);
       T[count] = W;
       if (previousCode > count) {
+        fprintf(stderr, "%s\n", "Corrupted file.");
+        deleteBits(inBits);
+        for (int i = 0; i <= tableSize; i++) {
+          if (T[i] != NULL) {
+            deleteSeq(T[i]);
+          }
+        }
+        free(T);
+        fclose(input);
+        fclose(output);
+        exit(1);
       }
-      //printf("count = %i\n", count);
       count++;
     }
-
-    //printf("%s\n", "Before Outputting code");
+    if (T[currentCode] == NULL) {
+      fprintf(stderr, "%s\n", "Corrupted file.");
+      deleteBits(inBits);
+      for (int i = 0; i <= tableSize; i++) {
+        if (T[i] != NULL) {
+          deleteSeq(T[i]);
+        }
+      }
+      free(T);
+      fclose(input);
+      fclose(output);
+      exit(1);
+    }
     outSeq(output, T[currentCode]);
-    //printf("%s\n", "After Outputting code");
     previousCode = currentCode;
   }
-/*
+
   for (int i = 0; i <= tableSize; i++) {
     if (T[i] != NULL) {
       deleteSeq(T[i]);
@@ -124,5 +140,4 @@ void decode(FILE* input, FILE* output, int startBits, int maxBits) {
   }
   free(T);
   deleteBits(inBits);
-*/
 }
