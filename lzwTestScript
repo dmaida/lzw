@@ -2,22 +2,22 @@
 #
 # Test Script for CS 360 extra credit lzw assignment
 #
-CLASSDIR=/encs_share/cs/class/cs360
+CLASSDIR=~/Desktop/lzw/lang
 FILE=warpeace
 PROG=lzw
 start=8
-max=19
+max=24
 
 echo "---------- cleaning student directory --------------------------------"
 make clean
 echo "---------- Building student program $PROG ------------------------------"
 make
 echo "---------- copying $FILE.txt to present working directory ------------"
-cp $CLASSDIR/lib/$FILE.txt $PWD
+cp $CLASSDIR/$FILE.txt $PWD
 echo "---------- encoding using instructor's program --------------------------"
-$CLASSDIR/bin/$PROG -encode -startingBits $start -maximumBits $max -input $FILE.txt  -output $FILE.lzw1 -debug 1
+$CLASSDIR/$PROG -encode -startingBits $start -maximumBits $max -input $FILE.txt  -output $FILE.lzw1
 echo "---------- decoding using instructor's program --------------------------"
-$CLASSDIR/bin/$PROG -decode -startingBits $start -maximumBits $max -input $FILE.lzw1 -output $FILE.out1 -debug 1
+$CLASSDIR/$PROG -decode -startingBits $start -maximumBits $max -input $FILE.lzw1 -output $FILE.out1 -debug 1
 echo "---------- checking for file differences from instructor's program ------"
 diff --brief $FILE.txt $FILE.out1
 echo "---------- done with instructor's program -------------------------------"
