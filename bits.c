@@ -1,13 +1,10 @@
 #include "bits.h"
 
-static int numOverflow = 0;
-static unsigned int overflow = 0;
-
 Bits* newBits(FILE* fd) {
   Bits* result = (Bits*) malloc(sizeof(Bits));
   result->fd = fd;
   result->extraBits = 0;
-  result->bitCount = 0;
+  result->bitCount = 0; /* Number of bits extra bits*/
   return result;
 }
 
@@ -16,44 +13,59 @@ void deleteBits(Bits* b) {
 }
 
 void writeBits(Bits* b, int nBits, int code){
-  unsigned int c;
+  /*
+  nBits is the number of bits to write.
+  code is the code that is going be written.
+  */
+  unsigned int c = 0;
+  int unsigned extraBits = b->extraBits;
+  int bitCount = b->bitCount;
 
-  numOverflow += nBits;
+  bitCount += nBits;
   code &= (1 << nBits) - 1;
 
-  overflow = (overflow << nBits) | code;
+  extraBits = (extraBits << nBits) | code;
 
-  while (numOverflow >= CHAR_BIT) {
-  	numOverflow -= CHAR_BIT;
-  	c = overflow >> numOverflow;
+  while (bitCount >= CHAR_BIT) {
+  	bitCount -= CHAR_BIT;
+  	c = extraBits >> bitCount;
   	fputc(c, b->fd);
-  	overflow = overflow ^ (c << numOverflow); //bitwise xor
+  	extraBits = extraBits ^ (c << bitCount); /* Bitwise xor*/
   }
 }
 
 bool readBits(Bits* b, int nBits, unsigned int *bits) {
-    int c;
-    static int numOverflow = 0;
-    static int unsigned overflow = 0;
+    /*
+    nBits is the number of bits to read.
+    Which should be between 8 and 24 bits.
+    *bits where the bits read are going to be saved.
+    */
+    int c = 0;
+    int unsigned extraBits = b->extraBits;
+    int bitCount = b->bitCount;
 
-    while (numOverflow < nBits) {
+    while (bitCount < nBits) {
       if ((c = fgetc(b->fd)) == EOF){
         return false;
       }
-      numOverflow += CHAR_BIT;
-      overflow = (overflow << CHAR_BIT) | c;
+      bitCount += CHAR_BIT;
+      extraBits = (extraBits << CHAR_BIT) | c;
     }
-    numOverflow -= nBits;
-    c = overflow >> numOverflow;
-    overflow = overflow ^ (c << numOverflow);
+    bitCount -= nBits;
+    c = extraBits >> bitCount;
+    extraBits = extraBits ^ (c << bitCount);
     *bits = c;
+    b->extraBits = extraBits;
+    b->bitCount = bitCount;
     return true;
 }
 
-void sendRemainingBits(Bits* b) {
+void flushBits(Bits* b) {
   char c;
-  if (numOverflow != 0){
-    c = overflow << (CHAR_BIT - numOverflow);
+  int unsigned extraBits = b->extraBits;
+  int bitCount = b->bitCount;
+  if (bitCount != 0){
+    c = extraBits << (CHAR_BIT - bitCount);
   	fputc(c, b->fd);
   }
 }
