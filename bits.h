@@ -8,8 +8,6 @@
 #include <limits.h>
 
 typedef struct _bits {
-  unsigned int extraBits;
-  int bitCount;
   FILE* fd;
 }Bits;
 
