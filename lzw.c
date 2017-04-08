@@ -40,7 +40,7 @@ void encode(FILE* input, FILE* output, int startBits, int maxBits) {
     }
   }
   writeBits(outBits, startBits, searchForSeq(table, W));
-  flushBits(outBits);
+  sendRemainingBits(outBits);
   deleteSeq(W);
   deleteBits(outBits);
 	destruct(table);
