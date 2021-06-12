@@ -7,26 +7,27 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-typedef struct _sequence{
+typedef struct _sequence
+{
     int size;
     int count;
-    char* key;
+    char *key;
 } Sequence;
 
-Sequence* newSequence(char key);
+Sequence *newSequence(char key);
 
-char firstChar(Sequence* seq);
+char firstChar(Sequence *seq);
 
-Sequence* copySequence(Sequence* seq);
+Sequence *copySequence(Sequence *seq);
 
-Sequence* appendSeq(Sequence* seq, char ch);
+Sequence *appendSeq(Sequence *seq, char ch);
 
-void outSeq(FILE* fd, Sequence* seq);
+void outSeq(FILE *fd, Sequence *seq);
 
-bool cmpSeq(Sequence* firstSeq, Sequence* secondSeq);
+bool cmpSeq(Sequence *firstSeq, Sequence *secondSeq);
 
-unsigned hashCode(Sequence* seq, int hashTableSize);
+unsigned hashCode(Sequence *seq, int hashTableSize);
 
-void deleteSeq(Sequence* seq);
+void deleteSeq(Sequence *seq);
 
 #endif

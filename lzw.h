@@ -9,7 +9,7 @@
 #include "seq.h"
 #include "bits.h"
 
-void encode(FILE* input, FILE* output, int startBits, int maxBits);
-void decode(FILE* input, FILE* output, int startBits, int maxBits);
+void encode(FILE *input, FILE *output, int startBits, int maxBits);
+void decode(FILE *input, FILE *output, int startBits, int maxBits);
 
 #endif
